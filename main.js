@@ -77,6 +77,9 @@ var getScriptPromisify = (src) => {
     onCustomWidgetDestroy () {
     }
 
+    getSelectedRegion () {
+	    return this.selectedLand;
+    }
 
     async render () {
 	    
@@ -104,7 +107,8 @@ var getScriptPromisify = (src) => {
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			//this.setLand(selectedRegionValue);
+			this.selectedLand = selectedRegionValue
+			console.log(this.selectedLand)
 			    
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
@@ -125,10 +129,6 @@ var getScriptPromisify = (src) => {
 	    });
 	
     }
-	
-	getSelectedRegion () {
-		return d.properties.name;
-	}
   }
 
   customElements.define('com-sap-sac-exercise-aa18', Main)
