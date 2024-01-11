@@ -46,15 +46,19 @@ var getScriptPromisify = (src) => {
 	this._shadowRoot = this.attachShadow({ mode: 'open' })
 	this._shadowRoot.appendChild(template.content.cloneNode(true))
 	this.text = "__";
-	  this._svg  = this._shadowRoot.getElementById('map')
+	this._svg  = this._shadowRoot.getElementById('map')
 	
 	// Include D3.js
 	this.script = document.createElement('script');
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
 	this.script.async = true;
-		  
-	  document.head.appendChild(this.script);
-	  this.render();
+	
+	document.head.appendChild(this.script);
+	//Adding event handler for click events
+	this.addEventListener("click", event => {
+	var event = new Event("onClick");
+	this.dispatchEvent(event);});
+	}
     }
 
     onCustomWidgetResize (width, height) {
