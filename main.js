@@ -53,6 +53,8 @@ var getScriptPromisify = (src) => {
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
 	this.script.async = true;
 	document.head.appendChild(this.script);
+	this.render = this.render.bind(this);
+
     }
 	  
     setland(newLand) {
