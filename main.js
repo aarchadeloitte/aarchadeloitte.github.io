@@ -105,7 +105,7 @@ var getScriptPromisify = (src) => {
                         const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			
-			setLand(selectedRegionValue);
+			this.setLand(selectedRegionValue);
 			    
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
@@ -123,7 +123,7 @@ var getScriptPromisify = (src) => {
 	
 	getSelectedRegion () {
 		
-		return getland();
+		return this.getland();
 	}
   }
 
