@@ -93,7 +93,7 @@ var getScriptPromisify = (src) => {
                         // Check if the class exists, then toggle it
                         const isSelected = d3.select(this).classed("selected");
 			const selectedRegionValue = d.properties.name;
-			this.text = d.properties.name;
+			
 			this._selectedRegion = { selectedRegionValue };
 			console.log(d.properties.name);
                         if (isSelected) {
@@ -107,6 +107,7 @@ var getScriptPromisify = (src) => {
 		this.addEventListener("click", event => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
+	        this.text = d.properties.name;
 		})
 		// Retrieve the property from the Custom Widget
 		// const selectedRegionValue = d.properties.name;
