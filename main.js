@@ -55,9 +55,9 @@ var getScriptPromisify = (src) => {
 	
 	document.head.appendChild(this.script);
 	//Adding event handler for click events
-	this.addEventListener("click", event => {
+	document.addEventListener("click", event => {
 	var event = new Event("onClick");
-	this.dispatchEvent(event);});
+	document.dispatchEvent(event);});
 
     }
 
