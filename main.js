@@ -108,19 +108,10 @@ var getScriptPromisify = (src) => {
 			    this.text = "___5____";		
                             d3.select(this).classed("selected", true);
                         }
-			    // Trigger the custom event
-			    var clickEvent = new Event("onClick");
-			    this.dispatchEvent(clickEvent);
-	        
-		})
-		// Retrieve the property from the Custom Widget
-		// const selectedRegionValue = d.properties.name;
-		// Use the retrieved value in your SAC application
-                    });
+
+	                });
             })
-            .catch(error => console.error('Error fetching data:', error));
-			
-		
+            .catch(error => console.error('Error fetching data:', error));	
 	}
 	
 	getSelectedRegion () {
