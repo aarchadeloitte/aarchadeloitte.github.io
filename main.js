@@ -102,7 +102,7 @@ var getScriptPromisify = (src) => {
                         const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			console.log('data___q1')
-      			this.text = "___5____";
+      			await this.text = "___5____";
 			console.log('DATAAAAAAAA' + d.properties.name);
 			console.log('thistext' + this.text);
 
@@ -121,7 +121,7 @@ var getScriptPromisify = (src) => {
 	}
 	
 	getSelectedRegion () {
-		this.render();
+		
 		return this.text;
 	}
   }
