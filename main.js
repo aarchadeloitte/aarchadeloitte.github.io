@@ -100,12 +100,11 @@ var getScriptPromisify = (src) => {
                     .attr("d", pathGenerator)
 		    .attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
-			    
+		
 			// Check if the class exists, then toggle it
-                        const isSelected = d3.select(this).classed("selected")
+			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			
-			this.setLand(selectedRegionValue);
+			//this.setLand(selectedRegionValue);
 			    
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
@@ -118,12 +117,17 @@ var getScriptPromisify = (src) => {
 
 	                });
             })
-            .catch(error => console.error('Error fetching data:', error));	
-	}
+            .catch(error => console.error('Error fetching data:', error));
+	    
+	    svg.addEventListener("click", () => {
+		    console.log('clicked');
+		    this.selectedLand = d.properties.name;
+	    });
+	
+    }
 	
 	getSelectedRegion () {
-		
-		return this.getland();
+		return d.properties.name;
 	}
   }
 
