@@ -42,7 +42,7 @@ var getScriptPromisify = (src) => {
   class Main extends HTMLElement {
     constructor () {
 	super()
-      this.text = "data"
+
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
 
@@ -104,6 +104,7 @@ this.render(); // Start rendering after D3.js is loaded
                         // Check if the class exists, then toggle it
                         const isSelected = d3.select(this).classed("selected");
 			const selectedRegionValue = d.properties.name;
+			this.text = d.properties.name;
 			this._selectedRegion = { selectedRegionValue };
 			console.log(d.properties.name);
                         if (isSelected) {
