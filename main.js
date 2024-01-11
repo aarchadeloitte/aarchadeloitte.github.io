@@ -102,10 +102,10 @@ var getScriptPromisify = (src) => {
 
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
-			    this.text = "___5____";
+			    this.text = "___6____";
                         } else {	
 			    svg.selectAll("path").classed("selected", false);
-			    this.text = "___5____";		
+			    this.text = "___7____";		
                             d3.select(this).classed("selected", true);
                         }
 
