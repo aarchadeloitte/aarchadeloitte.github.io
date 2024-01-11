@@ -117,6 +117,7 @@ var getScriptPromisify = (src) => {
 	}
 	
 	getSelectedRegion () {
+		this.render();
 		return this.text;
 	}
   }
