@@ -47,7 +47,7 @@ var getScriptPromisify = (src) => {
 	this._shadowRoot.appendChild(template.content.cloneNode(true))
 	this.selectedLand = ''
 	this._svg  = this._shadowRoot.getElementById('map')
-	
+	this.array_data = []
 	// Include D3.js
 	this.script = document.createElement('script');
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
@@ -62,29 +62,30 @@ var getScriptPromisify = (src) => {
     getland() {
 	    return this.selectedLand;
     }
-	 
+
     onCustomWidgetResize (width, height) {
 		this.render()
     }
-    
+
     onCustomWidgetBeforeUpdate (changedProps) {
        this.render(); // Start rendering after D3.js is loaded
     }
-	
+
     onCustomWidgetAfterUpdate (changedProps) {
     }
-	  
+
     onCustomWidgetDestroy () {
     }
 
     getSelectedRegion () {
+		
 	    return this.selectedLand;
     }
 
     async render () {
-	    
+
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	
+
 	const svg = d3.select(this._svg);
 
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
@@ -92,7 +93,7 @@ var getScriptPromisify = (src) => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
 
 		const projection = d3.geoIdentity().fitSize([800, 800], data);
-				
+
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
 
@@ -101,15 +102,15 @@ var getScriptPromisify = (src) => {
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
-		    .attr("title", d => d.properties.name)
+				    .attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
 		
-			// Check if the class exists, then toggle it
-			const isSelected = d3.select(this).classed("selected")
-			const selectedRegionValue = d.properties.name
-			this.selectedLand = selectedRegionValue
-			console.log(this.selectedLand)
-			    
+				// Check if the class exists, then toggle it
+				const isSelected = d3.select(this).classed("selected")
+				const selectedRegionValue = d.properties.name
+				this.array_data.push(selectedRegionValue)
+				console.log(11);
+					
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
 			    this.text = "___6____";
@@ -118,15 +119,10 @@ var getScriptPromisify = (src) => {
 			    this.text = "___7____";		
                             d3.select(this).classed("selected", true);
                         }
-
+				this.selectedLand = selectedRegionValue
 	                });
             })
             .catch(error => console.error('Error fetching data:', error));
-	    
-	    svg.addEventListener("click", () => {
-		    console.log('clicked');
-		    this.selectedLand = d.properties.name;
-	    });
 	
     }
   }
