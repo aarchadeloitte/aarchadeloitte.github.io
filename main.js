@@ -46,16 +46,13 @@ var getScriptPromisify = (src) => {
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
       this.text = "__";
-      //this._root = this._shadowRoot.getElementById('root')
 	  this._svg  = this._shadowRoot.getElementById('map')
 
       // Include D3.js
       this.script = document.createElement('script');
       this.script.src = 'https://d3js.org/d3.v7.min.js';
       this.script.async = true;
-	  
-	  this._selectedRegion = {};
-	  
+	  	  
 	  document.head.appendChild(this.script);
 	  this.render();
 	}
@@ -68,8 +65,6 @@ var getScriptPromisify = (src) => {
        this.render(); // Start rendering after D3.js is loaded
     }
 	  
-
-
     onCustomWidgetDestroy () {
     }
 
@@ -122,9 +117,11 @@ var getScriptPromisify = (src) => {
 			
 			
 	}
+	
+    getSelectedRegion () {
+		return this.text;
+	}
   }
 
   customElements.define('com-sap-sac-exercise-aa18', Main)
 })()
-
-
