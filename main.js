@@ -73,6 +73,7 @@ var getScriptPromisify = (src) => {
 	  await getScriptPromisify('https://d3js.org/d3.v7.min.js');
 
       console.log("testesttest");
+	this.text = "___2____";
 	  const svg = d3.select(this._svg);
 	  
         d3.json("https://aarchadeloitte.github.io/austria.geojson")
