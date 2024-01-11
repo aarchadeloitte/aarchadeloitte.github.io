@@ -61,17 +61,15 @@ var getScriptPromisify = (src) => {
 	 //	 properties: {
 	 //	 selectedLand: this.varLand}
 	 //}}))
-
-	 setland(newLand) {
-		 this.selectedLand = newLand
-	 }
-	 	 
-	 getland() {
-		 return this.selectedLand
-	 }
-	 
+	    
+    setland(newLand) {
+	    this.selectedLand = newLand
     }
-
+    
+    getland() {
+	    return this.selectedLand
+    }
+	 
     onCustomWidgetResize (width, height) {
 		this.render()
     }
