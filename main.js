@@ -54,7 +54,7 @@ var getScriptPromisify = (src) => {
 	this.script.async = true;
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
-
+	this.render();
     }
 	  
     setland(newLand) {
