@@ -90,7 +90,6 @@ var getScriptPromisify = (src) => {
                     .enter().append("path")
                     .attr("d", pathGenerator)
 		    .attr("title", d => d.properties.name)
-		    .attr("text", this.text => d.properties.name)
                     .on("click", function (event, d) {
 			this.dispatchEvent(new Event('onClick'))
                         // Check if the class exists, then toggle it
