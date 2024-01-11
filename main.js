@@ -58,12 +58,12 @@ var getScriptPromisify = (src) => {
 	this.addEventListener("click", event => {
 	var event = new Event("onClick");
 	this.dispatchEvent(event);});
-	}
+
     }
 
     onCustomWidgetResize (width, height) {
 		this.render()
-	}
+    }
     
     onCustomWidgetBeforeUpdate (changedProps) {
        this.render(); // Start rendering after D3.js is loaded
