@@ -66,13 +66,13 @@ var getScriptPromisify = (src) => {
     onCustomWidgetResize (width, height) {
 		this.render()
 	}
-	
-	async getSelectedRegion () {
+    
+    getSelectedRegion () {
 		return this._selectedRegion
     }
 
     onCustomWidgetAfterUpdate (changedProps) {
-        this.render(); // Start rendering after D3.js is loaded
+       // this.render(); // Start rendering after D3.js is loaded
     }
 
     onCustomWidgetDestroy () {
@@ -114,11 +114,9 @@ var getScriptPromisify = (src) => {
                             d3.select(this).classed("selected", true);
                         }
 
-
-
-						// Retrieve the property from the Custom Widget
-						// const selectedRegionValue = d.properties.name;
-// Use the retrieved value in your SAC application
+		// Retrieve the property from the Custom Widget
+		// const selectedRegionValue = d.properties.name;
+		// Use the retrieved value in your SAC application
                     });
             })
             .catch(error => console.error('Error fetching data:', error));
