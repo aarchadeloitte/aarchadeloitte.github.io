@@ -45,7 +45,7 @@ var getScriptPromisify = (src) => {
 
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
-
+      this.text = "__";
       //this._root = this._shadowRoot.getElementById('root')
 	  this._svg  = this._shadowRoot.getElementById('map')
 
@@ -64,17 +64,11 @@ var getScriptPromisify = (src) => {
 		this.render()
 	}
     
-    getSelectedRegion () {
-		return this._selectedRegion
-    }
-
     onCustomWidgetBeforeUpdate (changedProps) {
        this.render(); // Start rendering after D3.js is loaded
     }
 	  
-    onCustomWidgetAfterUpdate (changedProps) {
-this.render(); // Start rendering after D3.js is loaded
-    }
+
 
     onCustomWidgetDestroy () {
     }
