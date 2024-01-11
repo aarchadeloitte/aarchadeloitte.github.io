@@ -41,8 +41,11 @@ var getScriptPromisify = (src) => {
       `
   class Main extends HTMLElement {
     constructor () {
-      super()
-
+	super()
+	this.addEventListener("click", event => {
+ 	var event = new Event("onClick");
+ 	this.dispatchEvent(event);
+ 	})
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
 
@@ -110,8 +113,8 @@ var getScriptPromisify = (src) => {
 							
                             d3.select(this).classed("selected", true);
                         }
-						
-						this.dispatchEvent(new Event('onClick'))
+
+
 
 						// Retrieve the property from the Custom Widget
 						// const selectedRegionValue = d.properties.name;
