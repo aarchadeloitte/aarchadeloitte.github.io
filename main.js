@@ -100,18 +100,16 @@ var getScriptPromisify = (src) => {
 			console.log('thistext' + this.text);
 
                         if (isSelected) {
-							d3.select(this).classed("selected", false);
-							this.text = selectedRegionValue;
-                        } else {
-						
-							svg.selectAll("path").classed("selected", false);
-							this.text = selectedRegionValue;
-							
+			    d3.select(this).classed("selected", false);
+			    this.text = "___5____";
+                        } else {	
+			    svg.selectAll("path").classed("selected", false);
+			    this.text = "___5____";		
                             d3.select(this).classed("selected", true);
                         }
-		this.addEventListener("click", event => {
-		var event = new Event("onClick");
-		this.dispatchEvent(event);
+			    // Trigger the custom event
+			    var clickEvent = new Event("onClick");
+			    this.dispatchEvent(clickEvent);
 	        
 		})
 		// Retrieve the property from the Custom Widget
