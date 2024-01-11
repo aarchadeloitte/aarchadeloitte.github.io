@@ -74,8 +74,8 @@ var getScriptPromisify = (src) => {
 
       
 	this.text = "___2____";
-	  const svg = d3.select(this._svg);
-	  
+	const svg = d3.select(this._svg);
+	this.text = "___3____";
         d3.json("https://aarchadeloitte.github.io/austria.geojson")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
@@ -83,7 +83,7 @@ var getScriptPromisify = (src) => {
 				
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-
+		this.text = "___4____";
                 // Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
@@ -95,7 +95,7 @@ var getScriptPromisify = (src) => {
                         const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			console.log('data___q1')
-      			this.text = selectedRegionValue
+      			this.text = "___5____";
 			console.log('DATAAAAAAAA' + d.properties.name);
 			console.log('thistext' + this.text);
 
