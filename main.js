@@ -53,7 +53,8 @@ var getScriptPromisify = (src) => {
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
 	this.script.async = true;
 	document.head.appendChild(this.script);
-
+    }
+	  
     setland(newLand) {
 	    this.selectedLand = newLand;
     }
@@ -75,7 +76,7 @@ var getScriptPromisify = (src) => {
 	  
     onCustomWidgetDestroy () {
     }
-}
+
 
     async render () {
 	    
