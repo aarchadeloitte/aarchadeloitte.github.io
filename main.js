@@ -96,6 +96,7 @@ var getScriptPromisify = (src) => {
 			const selectedRegionValue = d.properties.name;
 			
 			this._selectedRegion = { selectedRegionValue };
+      this.text = selectedRegionValue;
 			console.log(d.properties.name);
                         if (isSelected) {
 							d3.select(this).classed("selected", false);
