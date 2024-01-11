@@ -56,11 +56,11 @@ var getScriptPromisify = (src) => {
 	document.head.appendChild(this.script);
 	//Adding event handler for click events
 	    
-	 this.dispatchEvent(new CustomEvent("propertiesChanged", {
-	 detail: {
-		 properties: {
-		 selectedLand: this.varLand}
-	 }}))
+	 //this.dispatchEvent(new CustomEvent("propertiesChanged", {
+	 //detail: {
+	 //	 properties: {
+	 //	 selectedLand: this.varLand}
+	 //}}))
 
 	 setland(newLand) {
 		 this.selectedLand = newLand
