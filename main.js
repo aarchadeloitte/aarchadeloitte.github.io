@@ -116,10 +116,10 @@ var getScriptPromisify = (src) => {
             })
             .catch(error => console.error('Error fetching data:', error));
 			
-	this.text = d.properties.name;		
+	console.log("AAAAAAAAAA"+d.properties.name);		
 	}
 	
-    getSelectedRegion () {
+	getSelectedRegion () {
 		return this.text;
 	}
   }
