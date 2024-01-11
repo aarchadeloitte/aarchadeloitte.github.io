@@ -42,10 +42,7 @@ var getScriptPromisify = (src) => {
   class Main extends HTMLElement {
     constructor () {
 	super()
-	this.addEventListener("click", event => {
- 	var event = new Event("onClick");
- 	this.dispatchEvent(event);
- 	})
+
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
 
@@ -113,7 +110,10 @@ var getScriptPromisify = (src) => {
 							
                             d3.select(this).classed("selected", true);
                         }
-
+		this.addEventListener("click", event => {
+		var event = new Event("onClick");
+		this.dispatchEvent(event);
+		})
 		// Retrieve the property from the Custom Widget
 		// const selectedRegionValue = d.properties.name;
 		// Use the retrieved value in your SAC application
