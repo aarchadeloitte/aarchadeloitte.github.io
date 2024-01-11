@@ -72,7 +72,7 @@ var getScriptPromisify = (src) => {
 		
 	  await getScriptPromisify('https://d3js.org/d3.v7.min.js');
 
-      console.log("testesttest");
+      
 	this.text = "___2____";
 	  const svg = d3.select(this._svg);
 	  
@@ -94,10 +94,9 @@ var getScriptPromisify = (src) => {
                         // Check if the class exists, then toggle it
                         const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			
 			console.log("data___q1")
       			this.text = selectedRegionValue
-			console.log(d.properties.name):
+			console.log(d.properties.name);
                         if (isSelected) {
 							d3.select(this).classed("selected", false);
                         } else {
@@ -118,7 +117,7 @@ var getScriptPromisify = (src) => {
             })
             .catch(error => console.error('Error fetching data:', error));
 			
-	console.log("AAAAAAAAAA"+d.properties.name);		
+		
 	}
 	
 	getSelectedRegion () {
