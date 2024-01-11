@@ -77,13 +77,13 @@ var getScriptPromisify = (src) => {
     onCustomWidgetBeforeUpdate (changedProps) {
        this.render(); // Start rendering after D3.js is loaded
     }
+	
     onCustomWidgetAfterUpdate (changedProps) {
-       //this.render();
-	// Start rendering after D3.js is loaded
     }
 	  
     onCustomWidgetDestroy () {
     }
+}
 
     async render () {
 	    
