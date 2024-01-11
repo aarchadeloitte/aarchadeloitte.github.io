@@ -52,22 +52,14 @@ var getScriptPromisify = (src) => {
 	this.script = document.createElement('script');
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
 	this.script.async = true;
-	
 	document.head.appendChild(this.script);
-	//Adding event handler for click events
-	    
-	 //this.dispatchEvent(new CustomEvent("propertiesChanged", {
-	 //detail: {
-	 //	 properties: {
-	 //	 selectedLand: this.varLand}
-	 //}}))
-	    
+
     setland(newLand) {
-	    this.selectedLand = newLand
+	    this.selectedLand = newLand;
     }
     
     getland() {
-	    return this.selectedLand
+	    return this.selectedLand;
     }
 	 
     onCustomWidgetResize (width, height) {
