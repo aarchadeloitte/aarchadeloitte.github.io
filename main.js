@@ -101,9 +101,11 @@ var getScriptPromisify = (src) => {
 
                         if (isSelected) {
 							d3.select(this).classed("selected", false);
+							this.text = selectedRegionValue;
                         } else {
 						
 							svg.selectAll("path").classed("selected", false);
+							this.text = selectedRegionValue;
 							
                             d3.select(this).classed("selected", true);
                         }
