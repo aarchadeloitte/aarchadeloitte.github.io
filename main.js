@@ -60,7 +60,7 @@ var getScriptPromisify = (src) => {
 	 detail: {
 		 properties: {
 		 selectedLand: this.varLand}
-	 }}));
+	 }}))
 
 	 setland(newLand) {
 		 this.selectedLand = newLand
