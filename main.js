@@ -124,7 +124,7 @@ var getScriptPromisify = (src) => {
 	}
   }
 
-  customElements.define('com-sap-sac-exercise-aa17', Main)
+  customElements.define('com-sap-sac-exercise-aa18', Main)
 })()
 
 
