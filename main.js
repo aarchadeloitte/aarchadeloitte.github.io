@@ -43,19 +43,19 @@ var getScriptPromisify = (src) => {
     constructor () {
 	super()
 
-      this._shadowRoot = this.attachShadow({ mode: 'open' })
-      this._shadowRoot.appendChild(template.content.cloneNode(true))
-      this.text = "__";
+	this._shadowRoot = this.attachShadow({ mode: 'open' })
+	this._shadowRoot.appendChild(template.content.cloneNode(true))
+	this.text = "__";
 	  this._svg  = this._shadowRoot.getElementById('map')
-
-      // Include D3.js
-      this.script = document.createElement('script');
-      this.script.src = 'https://d3js.org/d3.v7.min.js';
-      this.script.async = true;
-	  	  
+	
+	// Include D3.js
+	this.script = document.createElement('script');
+	this.script.src = 'https://d3js.org/d3.v7.min.js';
+	this.script.async = true;
+		  
 	  document.head.appendChild(this.script);
 	  this.render();
-	}
+    }
 
     onCustomWidgetResize (width, height) {
 		this.render()
@@ -64,22 +64,24 @@ var getScriptPromisify = (src) => {
     onCustomWidgetBeforeUpdate (changedProps) {
        this.render(); // Start rendering after D3.js is loaded
     }
+    onCustomWidgetAfterUpdate (changedProps) {
+       this.render(); // Start rendering after D3.js is loaded
+    }
 	  
     onCustomWidgetDestroy () {
     }
 
     async render () {
-		
-	  await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-
-      
+	    
+	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
 	this.text = "___2____";
 	const svg = d3.select(this._svg);
 	this.text = "___3____";
         d3.json("https://aarchadeloitte.github.io/austria.geojson")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-                const projection = d3.geoIdentity().fitSize([800, 800], data);
+
+		const projection = d3.geoIdentity().fitSize([800, 800], data);
 				
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
