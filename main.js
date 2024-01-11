@@ -107,7 +107,7 @@ var getScriptPromisify = (src) => {
 		this.addEventListener("click", event => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
-	        this.text = d.properties.name;
+	        
 		})
 		// Retrieve the property from the Custom Widget
 		// const selectedRegionValue = d.properties.name;
@@ -116,7 +116,7 @@ var getScriptPromisify = (src) => {
             })
             .catch(error => console.error('Error fetching data:', error));
 			
-			
+	this.text = d.properties.name;		
 	}
 	
     getSelectedRegion () {
