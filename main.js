@@ -37,7 +37,7 @@ var getScriptPromisify = (src) => {
 			  display: none; /* Hide tooltip by default */
 			}
         </style>
-		<svg id="map" width="800" height="800" onclick="alert('You have clicked the circle.')" ></svg>
+		<svg id="map" width="800" height="800" ></svg>
       `
   class Main extends HTMLElement {
     constructor () {
