@@ -68,8 +68,12 @@ var getScriptPromisify = (src) => {
 		return this._selectedRegion
     }
 
+    onCustomWidgetBeforeUpdate (changedProps) {
+       this.render(); // Start rendering after D3.js is loaded
+    }
+	  
     onCustomWidgetAfterUpdate (changedProps) {
-       // this.render(); // Start rendering after D3.js is loaded
+this.render(); // Start rendering after D3.js is loaded
     }
 
     onCustomWidgetDestroy () {
@@ -99,9 +103,9 @@ var getScriptPromisify = (src) => {
                     .on("click", function (event, d) {
                         // Check if the class exists, then toggle it
                         const isSelected = d3.select(this).classed("selected");
-						const selectedRegionValue = d.properties.name;
-						this._selectedRegion = { selectedRegionValue };
-						console.log(d.properties.name);
+			const selectedRegionValue = d.properties.name;
+			this._selectedRegion = { selectedRegionValue };
+			console.log(d.properties.name);
                         if (isSelected) {
 							d3.select(this).classed("selected", false);
                         } else {
