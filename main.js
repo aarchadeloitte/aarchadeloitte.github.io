@@ -42,7 +42,7 @@ var getScriptPromisify = (src) => {
   class Main extends HTMLElement {
     constructor () {
 	super()
-
+      this.text = "data"
       this._shadowRoot = this.attachShadow({ mode: 'open' })
       this._shadowRoot.appendChild(template.content.cloneNode(true))
 
