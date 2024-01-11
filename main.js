@@ -92,12 +92,12 @@ var getScriptPromisify = (src) => {
 					.attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
                         // Check if the class exists, then toggle it
-                        const isSelected = d3.select(this).classed("selected");
-			const selectedRegionValue = d.properties.name;
+                        const isSelected = d3.select(this).classed("selected")
+			const selectedRegionValue = d.properties.name
 			
-			console.log("data___q1");
-      			this.text = selectedRegionValue;
-			console.log(d.properties.name);
+			console.log("data___q1")
+      			this.text = selectedRegionValue
+			console.log(d.properties.name):
                         if (isSelected) {
 							d3.select(this).classed("selected", false);
                         } else {
