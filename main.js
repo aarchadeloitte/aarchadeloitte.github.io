@@ -112,17 +112,18 @@ var getScriptPromisify = (src) => {
 				    .attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
 		
-				// Check if the class exists, then toggle it
-				const isSelected = d3.select(this).classed("selected")
-				const selectedRegionValue = d.properties.name
-                        if (isSelected) {
-			    d3.select(this).classed("selected", false);
-                        } else {	
-			    svg.selectAll("path").classed("selected", false);
-                            d3.select(this).classed("selected", true);
-                        }
-				this.selectedLand = selectedRegionValue
-	                });
+			// Check if the class exists, then toggle it
+			const isSelected = d3.select(this).classed("selected")
+			const selectedRegionValue = d.properties.name
+			console.log('selectedRegionValue');
+				if (isSelected) {
+					d3.select(this).classed("selected", false);
+				} else {
+					svg.selectAll("path").classed("selected", false);
+					d3.select(this).classed("selected", true);
+				}
+			    this._selectedLand = selectedRegionValue
+		    });
             })
             .catch(error => console.error('Error fetching data:', error));
 	
