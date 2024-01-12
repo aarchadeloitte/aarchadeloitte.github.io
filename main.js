@@ -57,12 +57,18 @@ var getScriptPromisify = (src) => {
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
 	this.render()
 
+	const Selected_Data = {
+	  set current(name) {
+	    this.log.push(name);
+	  },
+	  log: [],
+	};
+	
+
+
     }
-      
-    setland(newLand) {
-	    this._selectedLand = newLand;
-    }
-    
+
+
     getland() {
 	    return this.selectedLand;
     }
@@ -116,6 +122,7 @@ var getScriptPromisify = (src) => {
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			console.log('selectedRegionValue');
+			this.Selected_Data.current(selectedRegionValue);
 				if (isSelected) {
 					d3.select(this).classed("selected", false);
 				} else {
@@ -126,7 +133,6 @@ var getScriptPromisify = (src) => {
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
-	    svg.onclick = function() {console.log('selectedRegionValue');};
 
 	
     }
