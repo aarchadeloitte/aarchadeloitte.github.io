@@ -45,8 +45,9 @@ var getScriptPromisify = (src) => {
 
 	this._shadowRoot = this.attachShadow({ mode: 'open' })
 	this._shadowRoot.appendChild(template.content.cloneNode(true))
-	this.selectedLand = ''
+	this._selectedLand = ''
 	this._svg  = this._shadowRoot.getElementById('map')
+	
 	// Include D3.js
 	this.script = document.createElement('script');
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
@@ -57,7 +58,7 @@ var getScriptPromisify = (src) => {
 	this.render()
 
     }
-	  
+      
     setland(newLand) {
 	    this.selectedLand = newLand;
     }
@@ -91,7 +92,8 @@ var getScriptPromisify = (src) => {
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
 
 	const svg = d3.select(this._svg);
-
+	const data1 = this._selectedLand
+	console.log(data1)
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
