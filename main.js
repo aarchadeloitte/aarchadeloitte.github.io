@@ -37,6 +37,10 @@ var getScriptPromisify = (src) => {
 			  display: none; /* Hide tooltip by default */
 			}
         </style>
+		
+		<script id="GlData">
+		var Gdata = [],
+		</script>
 		<svg id="map" width="800" height="800" ></svg>
       `
   class Main extends HTMLElement {
