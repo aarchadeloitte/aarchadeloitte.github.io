@@ -123,6 +123,7 @@ var getScriptPromisify = (src) => {
 					d3.select(this).classed("selected", true);
 				}
 			    this._selectedLand = selectedRegionValue
+			    document.getElementById("map").setAttribute('data-val',selectedRegionValue);
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
