@@ -53,6 +53,7 @@ var getScriptPromisify = (src) => {
 	this.script.async = true;
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
+	this.getSelectedRegion = this.getSelectedRegion.bind(this);
 	this.render()
 
     }
