@@ -47,14 +47,16 @@ var getScriptPromisify = (src) => {
 	this._shadowRoot.appendChild(template.content.cloneNode(true))
 	this.selectedLand = ''
 	this._svg  = this._shadowRoot.getElementById('map')
-	this.array_data = []
 	// Include D3.js
 	this.script = document.createElement('script');
 	this.script.src = 'https://d3js.org/d3.v7.min.js';
 	this.script.async = true;
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
-	this.render();
+	this.render()
+	this.array_data = []
+	this.array_data.push('Data')
+
     }
 	  
     setland(newLand) {
