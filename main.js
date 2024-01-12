@@ -67,12 +67,26 @@ var getScriptPromisify = (src) => {
 	  },
 	  log: [],
 	};
-	
-
-
     }
 
+    onClickFunction(event, d) {
+	
+	this.dispatchEvent(new Event('onClick'))
+	const isSelected = d3.select(this).classed("selected")
+	const selectedRegionValue = d.properties.name
+	
+	if (isSelected) {
+		d3.select(this).classed("selected", false);
+	} else {
+		svg.selectAll("path").classed("selected", false);
+		d3.select(this).classed("selected", true);
+	}
+	    this._selectedLand = selectedRegionValue
+    	}
 
+
+
+	  
     getland() {
 	    return this.selectedLand;
     }
@@ -100,41 +114,23 @@ var getScriptPromisify = (src) => {
     async render () {
 
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-
 	const svg = d3.select(this._svg);
 	const data1 = this._selectedLand
 	console.log(data1)
 	this._selectedLand = 'DataChanged'
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
-            .then(data => {
-                // Create a projection to transform geographic coordinates to SVG coordinates
-
+		.then(data => {
 		const projection = d3.geoIdentity().fitSize([800, 800], data);
-
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-
-		    // Draw paths for each feature
+			
+		// Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
-				    .attr("title", d => d.properties.name)
-                    .on("click", function (event, d) {
-		
-			// Check if the class exists, then toggle it
-			const isSelected = d3.select(this).classed("selected")
-			const selectedRegionValue = d.properties.name
-			console.log('selectedRegionValue');
-			this.Selected_Data.current(selectedRegionValue);
-				if (isSelected) {
-					d3.select(this).classed("selected", false);
-				} else {
-					svg.selectAll("path").classed("selected", false);
-					d3.select(this).classed("selected", true);
-				}
-			    this._selectedLand = selectedRegionValue
-		    });
+		    .attr("title", d => d.properties.name)
+                    .on("click", () => this.onClickFunction(event, d));
             })
             .catch(error => console.error('Error fetching data:', error));
 
