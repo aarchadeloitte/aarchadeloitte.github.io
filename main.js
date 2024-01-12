@@ -73,7 +73,7 @@ var getScriptPromisify = (src) => {
 	
 	this.dispatchEvent(new Event('onClick'))
 	const isSelected = d3.select(this).classed("selected")
-	const selectedRegionValue = d.properties.name
+	const selectedRegionValue = d
 	
 	if (isSelected) {
 		d3.select(this).classed("selected", false);
@@ -130,7 +130,7 @@ var getScriptPromisify = (src) => {
                     .enter().append("path")
                     .attr("d", pathGenerator)
 		    .attr("title", d => d.properties.name)
-                    .on("click", () => this.onClickFunction(event, d));
+                    .on("click", () => this.onClickFunction(event, d.properties.name));
             })
             .catch(error => console.error('Error fetching data:', error));
 
