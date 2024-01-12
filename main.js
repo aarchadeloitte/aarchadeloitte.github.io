@@ -54,8 +54,6 @@ var getScriptPromisify = (src) => {
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
 	this.render()
-	this.array_data = []
-	this.array_data.push('Data')
 
     }
 	  
@@ -84,7 +82,7 @@ var getScriptPromisify = (src) => {
 
     getSelectedRegion () {
 		
-	    return this.array_data;
+	    return this.__data__.properties.name;
     }
 
     async render () {
@@ -113,8 +111,6 @@ var getScriptPromisify = (src) => {
 				// Check if the class exists, then toggle it
 				const isSelected = d3.select(this).classed("selected")
 				const selectedRegionValue = d.properties.name
-				this.array_data.push(selectedRegionValue)
-				console.log(selectedRegionValue);	
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
                         } else {	
