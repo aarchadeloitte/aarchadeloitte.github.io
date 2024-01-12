@@ -123,10 +123,11 @@ var getScriptPromisify = (src) => {
 					d3.select(this).classed("selected", true);
 				}
 			    this._selectedLand = selectedRegionValue
-			    svg.setAttribute('data-val',selectedRegionValue);
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
+	    svg.onclick = function() {console.log('selectedRegionValue');};
+
 	
     }
   }
