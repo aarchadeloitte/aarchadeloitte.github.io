@@ -74,6 +74,7 @@ var getScriptPromisify = (src) => {
     }
 
     onCustomWidgetAfterUpdate (changedProps) {
+	    this.render();
     }
 
     onCustomWidgetDestroy () {
@@ -81,7 +82,7 @@ var getScriptPromisify = (src) => {
 
     getSelectedRegion () {
 		
-	    return this.selectedLand;
+	    return this.array_data;
     }
 
     async render () {
@@ -111,14 +112,11 @@ var getScriptPromisify = (src) => {
 				const isSelected = d3.select(this).classed("selected")
 				const selectedRegionValue = d.properties.name
 				this.array_data.push(selectedRegionValue)
-				console.log(11);
-					
+				console.log(selectedRegionValue);	
                         if (isSelected) {
 			    d3.select(this).classed("selected", false);
-			    this.text = "___6____";
                         } else {	
 			    svg.selectAll("path").classed("selected", false);
-			    this.text = "___7____";		
                             d3.select(this).classed("selected", true);
                         }
 				this.selectedLand = selectedRegionValue
