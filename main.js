@@ -59,17 +59,17 @@ var getScriptPromisify = (src) => {
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
+	
+	const _regionSelected = {
+		region: "DDD",
+		set changeAttr(newRegion) {
+			this.region = newRegion;
+		}
+	}
+	
 	this.render()
-	    const _regionSelected = {
-		    region: "DDD",
-		    set changeAttr(newRegion) {
-			    this.region = newRegion;
-		    }
-	    }
     }
-	  
 
-	  
     getland() {
 	    return this.selectedLand;
     }
@@ -90,36 +90,32 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-	    return this._regionSelected.region;
+	    return this.render().selectedValue;
     }
 	  
    async render () {
+	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-
-	this._regionSelected.changeAttr('DataDataData')
-		   
+	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
-	const data1 = this._selectedLand
+	
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-
 		const projection = d3.geoIdentity().fitSize([800, 800], data);
-
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-
-		    // Draw paths for each feature
+		// Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
 		    .attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
-		
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
+			this.selectedValue = "2DataDataDataDataData2";
 			console.log(selectedRegionValue);
 			
 			if (isSelected) {
@@ -131,8 +127,6 @@ var getScriptPromisify = (src) => {
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
-
-	
     }
   }
 
