@@ -60,14 +60,15 @@ var getScriptPromisify = (src) => {
 	this.render = this.render.bind(this);
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
 	this.render()
-    }
-	  
-    const _regionSelected = {
-	    region: "DDD",
-	    set changeAttr(newRegion) {
-		    this.region = newRegion;
+	    const _regionSelected = {
+		    region: "DDD",
+		    set changeAttr(newRegion) {
+			    this.region = newRegion;
+		    }
 	    }
     }
+	  
+
 	  
     getland() {
 	    return this.selectedLand;
