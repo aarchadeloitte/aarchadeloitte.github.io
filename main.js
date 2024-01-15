@@ -93,10 +93,8 @@ var getScriptPromisify = (src) => {
 	    return this._regionSelected.region;
     }
 	  
-  async render () {
-
-	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-
+   render () {
+	getScriptPromisify('https://d3js.org/d3.v7.min.js');
 	const svg = d3.select(this._svg);
 	const data1 = this._selectedLand
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
