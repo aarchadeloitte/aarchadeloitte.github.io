@@ -95,6 +95,9 @@ var getScriptPromisify = (src) => {
 	  
    async render () {
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
+
+	this._regionSelected.changeAttr('DataDataData')
+		   
 	const svg = d3.select(this._svg);
 	const data1 = this._selectedLand
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
@@ -118,7 +121,7 @@ var getScriptPromisify = (src) => {
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			console.log(selectedRegionValue);
-			this._regionSelected.changeAttr('DataDataData')
+			
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
 			} else {
