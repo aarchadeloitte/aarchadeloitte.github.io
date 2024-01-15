@@ -90,14 +90,13 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-		_svgData       = this._svg.childNodes
+		let _svgData       = this._svg.childNodes
 		for(let i = 0; i < _svgData.length; i++) {
-			let _svgDataClass = _svgData[i].classList.value
-			if (_svgDataClass === 'selected') {
-				let selectValue = _svgData[i].properties.name
-			}
-		}
-		return selectValue;
+			if (_svgData[i].classList.value === 'selected') {
+				let __index = i; 
+			}		
+	}
+	return  selectValue = _svgData[__index].__data__.properties.name
     }
 	  
 	  
