@@ -93,11 +93,12 @@ var getScriptPromisify = (src) => {
 		let _svgData       = this._svg.childNodes
 		for(let i = 0; i < _svgData.length; i++) {
 			if (_svgData[i].classList.value === 'selected') {
-				let __index = i; 
-			}		
+				const __index = i;
+				let retVal = _svgData[__index].__data__.properties.name
+				return  retVal
+		} 
 	}
-	return  selectValue = _svgData[__index].__data__.properties.name
-    }
+}
 	  
 	  
    async render () {
