@@ -61,14 +61,14 @@ var getScriptPromisify = (src) => {
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
 	this.render()
     }
-
-const _regionSelected = {
-	region: '',
-	set changeAttr(newRegion) {
-		this.region = newRegion;
+	  
+    const _regionSelected = {
+	    region: "DDD",
+	    set changeAttr(newRegion) {
+		    this.region = newRegion;
 	    }
-	}
-
+    }
+	  
     getland() {
 	    return this.selectedLand;
     }
@@ -126,7 +126,7 @@ const _regionSelected = {
 				svg.selectAll("path").classed("selected", false);
 				d3.select(this).classed("selected", true);
 			}
-			this._regionSelected.changeAttr('DataDataData')
+			//this._regionSelected.changeAttr('DataDataData')
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
