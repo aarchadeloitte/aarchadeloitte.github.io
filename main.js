@@ -119,8 +119,7 @@ var getScriptPromisify = (src) => {
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			console.log('selectedRegionValue');
-			this.Selected_Data.current(selectedRegionValue);
+			console.log(selectedRegionValue);
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
 			} else {
