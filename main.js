@@ -118,13 +118,13 @@ var getScriptPromisify = (src) => {
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
 			console.log(selectedRegionValue);
+			this._regionSelected.changeAttr('DataDataData')
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
 			} else {
 				svg.selectAll("path").classed("selected", false);
 				d3.select(this).classed("selected", true);
 			}
-			//this._regionSelected.changeAttr('DataDataData')
 		    });
             })
             .catch(error => console.error('Error fetching data:', error));
