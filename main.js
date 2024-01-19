@@ -41,7 +41,7 @@ var getScriptPromisify = (src) => {
 		<script id="GlData">
 		var Gdata = [],
 		</script>
-		<svg id="map" width="800" height="800" ></svg>
+		<svg id="map" width="600" height="600" ></svg>
       `
   class Main extends HTMLElement {
     constructor () {
@@ -110,7 +110,7 @@ var getScriptPromisify = (src) => {
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([800, 800], data);
+		const projection = d3.geoIdentity().fitSize([600, 600], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
 		// Draw paths for each feature
