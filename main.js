@@ -59,7 +59,10 @@ var getScriptPromisify = (src) => {
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
-	
+	this.addEventListener("click", event => {
+		var event = new Event("onClick");
+		this.dispatchEvent(event);
+	});
 	const _regionSelected = {
 		region: "DDD",
 		set changeAttr(newRegion) {
