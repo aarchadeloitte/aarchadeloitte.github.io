@@ -36,24 +36,12 @@ var getScriptPromisify = (src) => {
 			  pointer-events: none; /* Allows mouse events to go through the tooltip */
 			  display: none; /* Hide tooltip by default */
 			}
-			.canvas {
-				display: block;
-				width: 100%;
-				visibility: hidden;
-			  }
         </style>
 		
 		<script id="GlData">
 		var Gdata = [],
 		</script>
-
-		<div class="graph">
-        <canvas width="100" height="400"></canvas>
-		<svg id="map" viewBox="0 0 0 400" preserveAspectRatio="xMinYMin"></svg>
-    	</div>
-
-
-		
+		<svg id="map" width="600" height="600" ></svg>
       `
   class Main extends HTMLElement {
     constructor () {
@@ -75,8 +63,18 @@ var getScriptPromisify = (src) => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
 	});
+	const _regionSelected = {
+		region: "DDD",
+		set changeAttr(newRegion) {
+			this.region = newRegion;
+		}
+	}
 	
 	this.render()
+    }
+
+    getland() {
+	    return this.selectedLand;
     }
 
     onCustomWidgetResize (width, height) {
@@ -95,7 +93,7 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-		let _svgData = this._svg.childNodes
+		let _svgData       = this._svg.childNodes
 		for(let i = 0; i < _svgData.length; i++) {
 			if (_svgData[i].classList.value === 'selected') {
 				const __index = i;
@@ -109,35 +107,36 @@ var getScriptPromisify = (src) => {
    async render () {
 	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
+	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
 	
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
-	//d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-				const projection = d3.geoIdentity().fitSize([500,500], data);			//
+		const projection = d3.geoIdentity().fitSize([600, 600], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-				// Draw paths for each feature
+		// Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
-					.attr("title", d => d.properties.name)
+		    .attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
+			// Check if the class exists, then toggle it
+			const isSelected = d3.select(this).classed("selected")
+			const selectedRegionValue = d.properties.name
+			this.selectedValue = "2DataDataDataDataData2";
+			console.log(selectedRegionValue);
 			
-				// Check if the class exists, then toggle it
-				const isSelected = d3.select(this).classed("selected")
-				const selectedRegionValue = d.properties.name
-			
-				if (isSelected) {
-					d3.select(this).classed("selected", false);
-				} else {
-					svg.selectAll("path").classed("selected", false);
-					d3.select(this).classed("selected", true);
-				}
-				});
-				})
+			if (isSelected) {
+				d3.select(this).classed("selected", false);
+			} else {
+				svg.selectAll("path").classed("selected", false);
+				d3.select(this).classed("selected", true);
+			}
+		    });
+            })
             .catch(error => console.error('Error fetching data:', error));
     }
   }
