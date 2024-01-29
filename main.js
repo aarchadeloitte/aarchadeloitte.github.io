@@ -48,8 +48,8 @@ var getScriptPromisify = (src) => {
 		</script>
 
 		<div class="graph">
-        <canvas width="600" height="400"></canvas>
-		<svg id="map" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin"></svg>
+        <canvas width="100" height="400"></canvas>
+		<svg id="map" viewBox="0 0 0 400" preserveAspectRatio="xMinYMin"></svg>
     	</div>
 
 
