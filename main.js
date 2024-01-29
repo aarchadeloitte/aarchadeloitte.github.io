@@ -110,7 +110,8 @@ var getScriptPromisify = (src) => {
 	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
 	
-	d3.json("https://aarchadeloitte.github.io/austria.geojson")
+	//d3.json("https://aarchadeloitte.github.io/austria.geojson")
+	d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
 		const projection = d3.geoIdentity().fitSize([600, 600], data);
