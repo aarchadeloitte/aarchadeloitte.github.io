@@ -42,7 +42,7 @@ var getScriptPromisify = (src) => {
 		<script id="GlData">
 		var Gdata = [],
 		</script>
-		<svg id="map" width="100%" higth="100%" ></svg>
+		<svg id="map" width="500" height="250" ></svg>
       `
   class Main extends HTMLElement {
     constructor () {
@@ -118,8 +118,6 @@ var getScriptPromisify = (src) => {
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			this.selectedValue = "2DataDataDataDataData2";
-			console.log(selectedRegionValue);
 			
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
