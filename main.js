@@ -41,7 +41,7 @@ var getScriptPromisify = (src) => {
 		<script id="GlData">
 		var Gdata = [],
 		</script>
-		<svg id="map" viewBox="0 0 100 400" preserveAspectRatio="xMinYMin"></svg>
+		<svg id="map" viewBox="0 0 600 600" preserveAspectRatio="xMinYMin"></svg>
       `
   class Main extends HTMLElement {
     constructor () {
