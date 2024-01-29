@@ -106,7 +106,7 @@ var getScriptPromisify = (src) => {
 	//d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([600, 600], data);
+		const projection = d3.geoIdentity().fitSize([400, 600], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
 		// Draw paths for each feature
