@@ -11,8 +11,7 @@ var getScriptPromisify = (src) => {
 					  /* Your CSS styles here */
 			svg {
 			  /* border: 1px solid #ccc; */
-     			  width:  300px;
-  			  height: 600px;
+
 			  transform: scaleY(-1); /* Flip the SVG vertically */
 			  position: relative; /* Required for positioning tooltips */
 			}
@@ -43,7 +42,7 @@ var getScriptPromisify = (src) => {
 		<script id="GlData">
 		var Gdata = [],
 		</script>
-		<svg id="map" width="600" height="600" ></svg>
+		<svg id="map"></svg>
       `
   class Main extends HTMLElement {
     constructor () {
