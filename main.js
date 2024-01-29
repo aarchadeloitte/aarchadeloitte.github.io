@@ -67,10 +67,6 @@ var getScriptPromisify = (src) => {
 	this.render()
     }
 
-    getland() {
-	    return this.selectedLand;
-    }
-
     onCustomWidgetResize (width, height) {
 		this.render()
     }
@@ -87,7 +83,7 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-		let _svgData       = this._svg.childNodes
+		let _svgData = this._svg.childNodes
 		for(let i = 0; i < _svgData.length; i++) {
 			if (_svgData[i].classList.value === 'selected') {
 				const __index = i;
@@ -101,34 +97,37 @@ var getScriptPromisify = (src) => {
    async render () {
 	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	const svg = d3.select(this._svg);
+	const svg = d3.select(this._svg)
+		.style("width", "100%")
+		.style("height", "100%");
 	
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
 	//d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([100, 1000], data);
+				const projection = d3.geoIdentity().fitSize([100, 1000], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-		// Draw paths for each feature
+				// Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
-		    .attr("title", d => d.properties.name)
+					.attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
-			// Check if the class exists, then toggle it
-			const isSelected = d3.select(this).classed("selected")
-			const selectedRegionValue = d.properties.name
 			
-			if (isSelected) {
-				d3.select(this).classed("selected", false);
-			} else {
-				svg.selectAll("path").classed("selected", false);
-				d3.select(this).classed("selected", true);
-			}
-		    });
-            })
+				// Check if the class exists, then toggle it
+				const isSelected = d3.select(this).classed("selected")
+				const selectedRegionValue = d.properties.name
+			
+				if (isSelected) {
+					d3.select(this).classed("selected", false);
+				} else {
+					svg.selectAll("path").classed("selected", false);
+					d3.select(this).classed("selected", true);
+				}
+				});
+				})
             .catch(error => console.error('Error fetching data:', error));
     }
   }
