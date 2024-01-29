@@ -103,11 +103,11 @@ var getScriptPromisify = (src) => {
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
 	const svg = d3.select(this._svg);
 	
-	//d3.json("https://aarchadeloitte.github.io/austria.geojson")
-	d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
+	d3.json("https://aarchadeloitte.github.io/austria.geojson")
+	//d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([100, 100], data);
+		const projection = d3.geoIdentity().fitSize([100, 1000], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
 		// Draw paths for each feature
