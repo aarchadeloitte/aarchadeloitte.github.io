@@ -36,12 +36,24 @@ var getScriptPromisify = (src) => {
 			  pointer-events: none; /* Allows mouse events to go through the tooltip */
 			  display: none; /* Hide tooltip by default */
 			}
+			.canvas {
+				display: block;
+				width: 100%;
+				visibility: hidden;
+			  }
         </style>
 		
 		<script id="GlData">
 		var Gdata = [],
 		</script>
+
+		<div class="graph">
+        <canvas width="600" height="400"></canvas>
 		<svg id="map" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin"></svg>
+    	</div>
+
+
+		
       `
   class Main extends HTMLElement {
     constructor () {
