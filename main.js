@@ -63,13 +63,6 @@ var getScriptPromisify = (src) => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
 	});
-	const _regionSelected = {
-		region: "DDD",
-		set changeAttr(newRegion) {
-			this.region = newRegion;
-		}
-	}
-	
 	this.render()
     }
 
@@ -91,27 +84,24 @@ var getScriptPromisify = (src) => {
 	  
     onCustomWidgetDestroy () {
     }
-
     getSelectedRegion () {
-		let _svgData       = this._svg.childNodes
-		for(let i = 0; i < _svgData.length; i++) {
-			if (_svgData[i].classList.value === 'selected') {
+	    let _svgData = this._svg.childNodes
+		    for(let i = 0; i < _svgData.length; i++) {
+			    if (_svgData[i].classList.value === 'selected') {
 				const __index = i;
 				let retVal = _svgData[__index].__data__.properties.name
-				return  retVal
-		} 
-	}
-}
+				return  retVal}
+		}
+    }
 	  
 	  
    async render () {
 	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
 	
-	//d3.json("https://aarchadeloitte.github.io/austria.geojson")
-	d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
+	d3.json("https://aarchadeloitte.github.io/austria.geojson")
+	//d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
 		const projection = d3.geoIdentity().fitSize([600, 600], data);
