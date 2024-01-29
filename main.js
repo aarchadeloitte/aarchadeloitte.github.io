@@ -63,12 +63,6 @@ var getScriptPromisify = (src) => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
 	});
-	const _regionSelected = {
-		region: "DDD",
-		set changeAttr(newRegion) {
-			this.region = newRegion;
-		}
-	}
 	
 	this.render()
     }
@@ -107,14 +101,13 @@ var getScriptPromisify = (src) => {
    async render () {
 	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
 	
 	//d3.json("https://aarchadeloitte.github.io/austria.geojson")
 	d3.json("https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/2_bundeslaender/3_mittel.geo.json")
             .then(data => {
                 // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([600, 600], data);
+		const projection = d3.geoIdentity().fitSize([400, 400], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
 		// Draw paths for each feature
@@ -127,8 +120,6 @@ var getScriptPromisify = (src) => {
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			this.selectedValue = "2DataDataDataDataData2";
-			console.log(selectedRegionValue);
 			
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
