@@ -1,0 +1,42 @@
+{
+  "eula": "",
+  "vendor": "AA",
+  "license": "",
+  "id": "com.sap.sac.exercise.aa18",
+  "version": "2.0.0",
+  "name": "GeoMapAustria",
+  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzklEQVQ4jWNgoBAwkqLYOLGjguH//1RGxv+7z8yvymBgYGBgIcm2//8lGRgZlP7/Z5CDiTGRYgA2QLEBOL2gFVrPxsXDYcfAwMDw7cuPQ9dWN/4iyQBebi75vwz/dkPZagwMDLexqaOeF4wT2jcyMjL4Mfz/33tmQVUJsQYgueA/K4RmZCXFBQMfjQNvADwWGBkZHv3/z3CPgZHxOQMDAwPjv9/fGJiZ7sLZDAwM/xkZnzP8/3+PkZHhEaUWwwGjSWL7f0oMYGFgYFCmxAAACtUz95booNoAAAAASUVORK5CYII=",
+  "newInstancePrefix": "ExerciseCustomWidget18",
+  "description": "Geo Map for Austria",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "com-sap-sac-exercise-aa18",
+      "url": "https://aarchadeloitte.github.io/main.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {
+    "width": {
+      "type": "integer",
+      "default": 800
+    },
+    "height": {
+      "type": "integer",
+      "default": 800
+    },
+	"text": {
+		"type": "string"
+	}
+
+ },
+  "methods":{
+	  "getSelectedRegion": {
+		  "returnType":  "string"
+ 	  }
+  },
+  "events":{
+	  "onClick": {"description":"Dispatch when user click the map"} 
+  }
+}
