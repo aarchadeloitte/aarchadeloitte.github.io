@@ -63,18 +63,9 @@ var getScriptPromisify = (src) => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
 	});
-	const _regionSelected = {
-		region: "DDD",
-		set changeAttr(newRegion) {
-			this.region = newRegion;
-		}
-	}
+
 	
 	this.render()
-    }
-
-    getland() {
-	    return this.selectedLand;
     }
 
     onCustomWidgetResize (width, height) {
@@ -93,21 +84,20 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-		let _svgData       = this._svg.childNodes
-		for(let i = 0; i < _svgData.length; i++) {
-			if (_svgData[i].classList.value === 'selected') {
-				const __index = i;
-				let retVal = _svgData[__index].__data__.properties.name
-				return  retVal
-		} 
+	let _svgData       = this._svg.childNodes
+	for(let i = 0; i < _svgData.length; i++) {
+		if (_svgData[i].classList.value === 'selected') {
+			const __index = i;
+			let retVal = _svgData[__index].__data__.properties.name
+			return  retVal
+		}
 	}
-}
+    }
 	  
 	  
    async render () {
 	
 	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	this.selectedValue = "1DataDataDataDataData1";
 	const svg = d3.select(this._svg);
 	
 	d3.json("https://aarchadeloitte.github.io/austria.geojson")
@@ -126,8 +116,6 @@ var getScriptPromisify = (src) => {
 			// Check if the class exists, then toggle it
 			const isSelected = d3.select(this).classed("selected")
 			const selectedRegionValue = d.properties.name
-			this.selectedValue = "2DataDataDataDataData2";
-			console.log(selectedRegionValue);
 			
 			if (isSelected) {
 				d3.select(this).classed("selected", false);
