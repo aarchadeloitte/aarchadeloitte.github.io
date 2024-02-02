@@ -83,10 +83,20 @@
       constructor () {
         super()
   
-        this._shadowRoot = this.attachShadow({ mode: 'open' })
+        this._shadowRoot    = this.attachShadow({ mode: 'open' })
         this._shadowRoot.appendChild(template.content.cloneNode(true))
-  
-        this._root = this._shadowRoot.getElementById('root')
+        this._root          = this._shadowRoot.getElementById('root')
+        this._output        = this._shadowRoot.getElementById('output')
+        this._code          = this._shadowRoot.getElementById('code')
+
+        this.codeMirror = this.CodeMirror.fromTextArea(this._code, {
+            mode: "python",
+            lineNumbers: true,
+            autofocus: true
+             });
+
+        console.log(this._code);
+        console.log(this._output);
       }
     }
   
