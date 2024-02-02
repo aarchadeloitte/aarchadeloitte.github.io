@@ -123,14 +123,10 @@ var getScriptPromisify = (src) => {
             });
     }
 
-
-
      async render () {
 
       await getScriptPromisify('https://d3js.org/d3.v7.min.js');
       
-
-        
          this._output.value = 'Initializing...\n';
         // init pyodide
         languagePluginLoader.then(() => {
