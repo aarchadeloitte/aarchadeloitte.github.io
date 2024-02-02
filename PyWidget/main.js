@@ -112,11 +112,11 @@ var getScriptPromisify = (src) => {
     }
       
       addToOutput(s) {
-        this._output.value += '>>>' + codeMirror.getValue() + '\n' + s + '\n';
+        this._output.value += '>>>' + this.codeMirror.getValue() + '\n' + s + '\n';
     }
       
       evaluatePython() {
-        pyodide.runPythonAsync(codeMirror.getValue())
+        pyodide.runPythonAsync(this.codeMirror.getValue())
             .then(output => addToOutput(this._output))
             .catch((err) => {
                 addToOutput(err)
