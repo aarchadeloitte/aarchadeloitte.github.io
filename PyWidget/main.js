@@ -83,9 +83,14 @@
         this._output        = this._shadowRoot.getElementById('output')
         this._code          = this._shadowRoot.getElementById('code')
 
+        // Initialize CodeMirror for syntax highlighting
+        const codeMirror = CodeMirror.fromTextArea(this._code, {
+            mode: "python",
+            lineNumbers: true,
+            autofocus: true
+        });
 
-        console.log(this._code);
-        console.log(this._output);
+        console.log(codeMirror);
       }
     }
   
