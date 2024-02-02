@@ -1,12 +1,7 @@
 (function () {
     const template = document.createElement('template')
     template.innerHTML = `
-          <style>
-          </style>
-          <div id="root" style="width: 100%; height: 100%;">
-          Hello Custom Widget111111
-          </div>
-
+    
           <head>
           <meta charset="UTF-8">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.css">
@@ -85,15 +80,9 @@
   
         this._shadowRoot    = this.attachShadow({ mode: 'open' })
         this._shadowRoot.appendChild(template.content.cloneNode(true))
-        this._root          = this._shadowRoot.getElementById('root')
         this._output        = this._shadowRoot.getElementById('output')
         this._code          = this._shadowRoot.getElementById('code')
 
-        this.codeMirror = this.CodeMirror.fromTextArea(this._code, {
-            mode: "python",
-            lineNumbers: true,
-            autofocus: true
-             });
 
         console.log(this._code);
         console.log(this._output);
