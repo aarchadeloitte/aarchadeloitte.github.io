@@ -18,5 +18,5 @@
       }
     }
   
-    customElements.define('com-sap-sac-exercise-PyCustomWidget', Main)
+    customElements.define('com-sap-sac-exercise-PyCustomWidget3', Main)
   })()
