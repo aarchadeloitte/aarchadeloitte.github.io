@@ -135,6 +135,6 @@ var getScriptPromisify = (src) => {
         evaluatePython();
     }
     }
-    customElements.define('PyWidget', Main)
+    customElements.define('com-sap-sac-exercise-PyWidget', Main)
   })()
   
