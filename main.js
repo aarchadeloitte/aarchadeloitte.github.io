@@ -38,9 +38,6 @@ var getScriptPromisify = (src) => {
 			}
         </style>
 		
-		<script id="GlData">
-		var Gdata = [],
-		</script>
 		<svg id="map" width="600" height="600" ></svg>
       `
   class Main extends HTMLElement {
@@ -83,50 +80,49 @@ var getScriptPromisify = (src) => {
     }
 
     getSelectedRegion () {
-	let _svgData       = this._svg.childNodes
+	let _svgData = this._svg.childNodes
+	
 	for(let i = 0; i < _svgData.length; i++) {
-		if (_svgData[i].classList.value === 'selected') {
-			const __index = i;
-			let retVal = _svgData[__index].__data__.properties.name
-			return  retVal
+			if (_svgData[i].classList.value === 'selected') {
+				const __index = i;
+				let retVal = _svgData[__index].__data__.properties.name
+				return  retVal
+			}
 		}
-	}
     }
-	  
-	  
-   async render () {
-	
-	await getScriptPromisify('https://d3js.org/d3.v7.min.js');
-	const svg = d3.select(this._svg);
-	
-	d3.json("https://aarchadeloitte.github.io/austria.geojson")
-            .then(data => {
-                // Create a projection to transform geographic coordinates to SVG coordinates
-		const projection = d3.geoIdentity().fitSize([600, 600], data);
+	    
+   	async render () {
+		
+		await getScriptPromisify('https://d3js.org/d3.v7.min.js');
+		const svg = d3.select(this._svg);
+		
+		d3.json("https://aarchadeloitte.github.io/austria.geojson")
+			.then(data => {                                          // Create a projection to transform geographic coordinates to SVG coordinates
+		
+				const projection = d3.geoIdentity().fitSize([600, 600], data);
                 // Create a path generator
                 const pathGenerator = d3.geoPath().projection(projection);
-		// Draw paths for each feature
+				// Draw paths for each feature
                 svg.selectAll("path")
                     .data(data.features)
                     .enter().append("path")
                     .attr("d", pathGenerator)
-		    .attr("title", d => d.properties.name)
+		    		.attr("title", d => d.properties.name)
                     .on("click", function (event, d) {
-			// Check if the class exists, then toggle it
-			const isSelected = d3.select(this).classed("selected")
-			const selectedRegionValue = d.properties.name
+				// Check if the class exists, then toggle it
+				const isSelected = d3.select(this).classed("selected")
+				const selectedRegionValue = d.properties.name
 			
-			if (isSelected) {
-				d3.select(this).classed("selected", false);
-			} else {
-				svg.selectAll("path").classed("selected", false);
-				d3.select(this).classed("selected", true);
-			}
-		    });
-            })
+				if (isSelected) {
+					d3.select(this).classed("selected", false);
+					} else {
+						svg.selectAll("path").classed("selected", false);
+						d3.select(this).classed("selected", true);
+					}
+				});
+        	})
             .catch(error => console.error('Error fetching data:', error));
-    }
+   		}
   }
-
   customElements.define('com-sap-sac-exercise-aa18', Main)
 })()
