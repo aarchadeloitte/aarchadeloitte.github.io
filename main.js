@@ -11,10 +11,8 @@ var getScriptPromisify = (src) => {
 					  /* Your CSS styles here */
 			svg {
 			  /* border: 1px solid #ccc; */
-			  transform: scaleY(-1); /* Flip the SVG vertically */
+			  transform: scaleY(-1.2); /* Flip the SVG vertically */
 			  position: relative; /* Required for positioning tooltips */
-			  height: "100";
-		      width: "100";
 			}
 			path {
 			  fill: #eee;
