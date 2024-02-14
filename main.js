@@ -13,6 +13,8 @@ var getScriptPromisify = (src) => {
 			  /* border: 1px solid #ccc; */
 			  transform: scaleY(-1); /* Flip the SVG vertically */
 			  position: relative; /* Required for positioning tooltips */
+			  height: "100";
+		      width: "100";
 			}
 			path {
 			  fill: #eee;
