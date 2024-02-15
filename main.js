@@ -45,7 +45,6 @@ var getScriptPromisify = (src) => {
 	super()
 	this._shadowRoot = this.attachShadow({ mode: 'open' })
 	this._shadowRoot.appendChild(template.content.cloneNode(true))
-	this._selectedLand = ''
 	this._svg  = this._shadowRoot.getElementById('map')
 	
 	// Include D3.js
