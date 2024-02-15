@@ -59,7 +59,6 @@ var getScriptPromisify = (src) => {
 		this.dispatchEvent(event);
 	});
 
-	
 	this.render()
     }
 
