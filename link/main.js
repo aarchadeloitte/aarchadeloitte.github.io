@@ -34,7 +34,7 @@
       onCustomWidgetResize (width, height) {
         this.render()
       }
-  
+
       onCustomWidgetAfterUpdate (changedProps) {
         this.render()
       }
@@ -52,5 +52,6 @@
       }
     }
   
+    
     customElements.define('com-sap-sac-exercise-aa30', Main)
   })()
