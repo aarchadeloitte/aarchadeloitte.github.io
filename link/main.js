@@ -22,8 +22,9 @@
 
       setLink (link) {
         this._link = link
-        this.render()
       }
+
+
   
   
       onCustomWidgetResize (width, height) {
