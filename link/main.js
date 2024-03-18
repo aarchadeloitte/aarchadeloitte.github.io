@@ -26,6 +26,11 @@
         this._link = link
         this.render()
       }
+
+      setDimensionId (DimensionId) {
+        this._DimensionId = DimensionId
+        this.render()
+      }
       getLink () {
         return this._link
       }
@@ -44,7 +49,7 @@
   
       async render () {
 
-        this._link_href.textContent = this._link
+        this._link_href.textContent = this._DimensionId
         this._link_href.href        = this._link 
 
         const dataBinding = this.dataBinding
