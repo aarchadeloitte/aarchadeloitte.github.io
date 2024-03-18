@@ -45,7 +45,7 @@ var getScriptPromisify = (src) => {
       
       // Custom function
       getSelectedRegion () {
-        let _svgData = this._url.childNodes
+        let _urlData = this._url.childNodes
       }
       
       
@@ -59,7 +59,7 @@ var getScriptPromisify = (src) => {
 
 
 
-      
+
     }
     customElements.define('com-sap-sac-exercise-aa18', Main)
   })()
