@@ -6,6 +6,8 @@
           </style>
           <div id="root" style="width: 100%; height: 100%;">
 
+
+
           </div>
         `
 
@@ -45,7 +47,7 @@
         if (!dataBinding || dataBinding.state !== 'success') {
           return
         }
-        this._root.textContent = this._link
+        this._root.textContent = `Hello Custom Widget clientWidth: ${this._link}'
         
       }
     }
