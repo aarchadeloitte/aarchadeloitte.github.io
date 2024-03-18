@@ -44,8 +44,7 @@
   
       async render () {
 
-        this._link_href.textContent = '${this._link}'
-        this._link_href.setAttribute('href', '${this._link}')
+        this._link_href.textContent = this._link
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
