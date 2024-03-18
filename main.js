@@ -1,3 +1,4 @@
+// For CALLBACKS
 var getScriptPromisify = (src) => {
   return new Promise((resolve) => {
     $.getScript(src, resolve);
@@ -5,6 +6,7 @@ var getScriptPromisify = (src) => {
 };
 
 (function () {
+  // Styles
   const template = document.createElement('template')
   template.innerHTML = `
 		<style>
@@ -40,6 +42,7 @@ var getScriptPromisify = (src) => {
 		
 		<svg id="map" width="600" height="600" ></svg>
       `
+
   class Main extends HTMLElement {
     constructor () {
 	super()
@@ -54,6 +57,8 @@ var getScriptPromisify = (src) => {
 	document.head.appendChild(this.script);
 	this.render = this.render.bind(this);
 	this.getSelectedRegion = this.getSelectedRegion.bind(this);
+	
+	// Must include for OnClick action in SAC
 	this.addEventListener("click", event => {
 		var event = new Event("onClick");
 		this.dispatchEvent(event);
@@ -76,7 +81,8 @@ var getScriptPromisify = (src) => {
 	  
     onCustomWidgetDestroy () {
     }
-
+	
+	// Custom function
     getSelectedRegion () {
 	let _svgData = this._svg.childNodes
 	
