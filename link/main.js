@@ -22,6 +22,7 @@
 
       setLink (link) {
         this._link = link
+        this.render()
       }
       getLink () {
         return this._link
@@ -45,6 +46,7 @@
           return
         }
         this._root.textContent = this._link
+        
       }
     }
   
