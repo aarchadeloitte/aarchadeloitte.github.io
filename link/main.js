@@ -5,7 +5,10 @@
           <style>
           </style>
           <div id="root" style="width: 100%; height: 100%;">
-          Hello Custom Widget
+          
+          <a href="https://f1qappl0.test.sozvers.at:44320/sap/bc/ui2/flp#AccountingDocument-displayDocument?sap-ui-tech-hint=GUI&AccountingDocument=600000001&FiscalYear=2024&CompanyCode=1000100020240600000001">Accounting Document</a>
+          
+          
           </div>
         `
     class Main extends HTMLElement {
