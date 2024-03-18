@@ -8,6 +8,7 @@
           Hello Custom Widget
           </div>
         `
+        
     class Main extends HTMLElement {
       constructor () {
         super()
