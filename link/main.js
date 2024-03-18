@@ -1,65 +1,23 @@
-// For CALLBACKS
-var getScriptPromisify = (src) => {
-    return new Promise((resolve) => {
-      $.getScript(src, resolve);
-    });
-  };
-  
-  (function () {
-    // Styles
+
+(function () {
     const template = document.createElement('template')
     template.innerHTML = `
-        <a href="id_url">link text</a>
-    `
-
+          <style>
+          </style>
+          <div id="root" style="width: 100%; height: 100%;">
+          Hello Custom Widget
+          </div>
+        `
     class Main extends HTMLElement {
       constructor () {
-      super()
-      this._shadowRoot = this.attachShadow({ mode: 'open' })
-      this._shadowRoot.appendChild(template.content.cloneNode(true))
-      this._url  = this._shadowRoot.getElementById('id_url')
-      
-      // Must include for OnClick action in SAC
-      this.addEventListener("click", event => {
-          var event = new Event("onClick");
-          this.dispatchEvent(event);
-      });
+        super()
   
-      this.render()
-      }
+        this._shadowRoot = this.attachShadow({ mode: 'open' })
+        this._shadowRoot.appendChild(template.content.cloneNode(true))
   
-      onCustomWidgetResize (width, height) {
-          this.render()
+        this._root = this._shadowRoot.getElementById('root')
       }
-  
-      onCustomWidgetBeforeUpdate (changedProps) {
-         this.render(); // Start rendering after D3.js is loaded
-      }
-  
-      onCustomWidgetAfterUpdate (changedProps) {
-          this.render();
-      }
-        
-      onCustomWidgetDestroy () {
-      }
-      
-      // Custom function
-      getSelectedRegion () {
-        let _urlData = this._url.childNodes
-      }
-      
-      
-      async render () {
-
-
-      }
-
-
-
-
-
-
-
     }
-    customElements.define('com-sap-sac-exercise-aa18', Main)
+  
+    customElements.define('com-sap-sac-exercise-aa30', Main)
   })()
