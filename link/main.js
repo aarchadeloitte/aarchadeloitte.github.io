@@ -47,7 +47,7 @@
         if (!dataBinding || dataBinding.state !== 'success') {
           return
         }
-        this._root.textContent = `Hello Custom Widget clientWidth: ${this._link}'
+        this._root.textContent = `Hello Custom Widget clientWidth: ${this._link}`
         
       }
     }
