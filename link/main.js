@@ -6,7 +6,8 @@
           </style>
           
           <div id="root" style="width: 100%; height: 100%;">
-            <a id = "link_href" >
+            <p><a id = "link_href" href="https://www.google.com/">Google</a></p>
+
           </div>
         `
 
