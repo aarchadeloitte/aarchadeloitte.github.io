@@ -6,7 +6,7 @@
           </style>
           
           <div id="root" style="width: 100%; height: 100%;">
-
+            <a id = "link_href" >
           </div>
         `
 
@@ -17,7 +17,8 @@
         this._shadowRoot = this.attachShadow({ mode: 'open' })
         this._shadowRoot.appendChild(template.content.cloneNode(true))
   
-        this._root = this._shadowRoot.getElementById('root')
+        this._root      = this._shadowRoot.getElementById('root')
+        this._link_href = this._shadowRoot.getElementById('link_href')
 
       }
 
@@ -43,7 +44,9 @@
   
       async render () {
 
-        this._root.textContent = `Link: ${this._link}`
+        this._link_href.textContent = `${this._link}`
+
+
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
