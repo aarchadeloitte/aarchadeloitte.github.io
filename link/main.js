@@ -43,8 +43,7 @@
   
       async render () {
 
-        this._shadowRoot.appendChild(document.createTextNode("This is a paragraph."))
-
+        this._root.textContent = `Link: ${this._link}`
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
