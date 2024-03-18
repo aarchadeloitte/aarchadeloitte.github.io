@@ -7,7 +7,6 @@
           
           <div id="root" style="width: 100%; height: 100%;">
             <p><a id = "link_href" href="https://www.google.com/">Google</a></p>
-
           </div>
         `
 
@@ -46,6 +45,7 @@
       async render () {
 
         this._link_href.textContent = this._link
+        this._link_href.href        = this._link 
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
