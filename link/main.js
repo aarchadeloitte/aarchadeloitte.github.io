@@ -37,11 +37,11 @@
   
   
       onCustomWidgetResize (width, height) {
-        this.render()
+
       }
 
       onCustomWidgetAfterUpdate (changedProps) {
-        this.render()
+
       }
   
       onCustomWidgetDestroy () {
