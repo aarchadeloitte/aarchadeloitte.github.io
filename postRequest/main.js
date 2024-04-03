@@ -90,7 +90,9 @@
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'public, max-age=30'
+            'Cache-Control': 'public, max-age=30',
+            'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS'
+
 
             //'Authorization': 'Bearer <your_access_token>' Include your access token here
           },
