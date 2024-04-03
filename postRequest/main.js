@@ -88,8 +88,8 @@
         const options = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
-            'Access-Control-Allow-Origin': '*'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             'Cache-Control': 'public, max-age=30'
 
             //'Authorization': 'Bearer <your_access_token>' Include your access token here
