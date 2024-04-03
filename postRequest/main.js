@@ -83,18 +83,24 @@
         
           ]
         };
-
         // Options for the fetch request
         const options = {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
             'Cache-Control': 'public, max-age=30',
-            'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS'
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
+            'Access-Control-Expose-Headers': "x-csrf-token, sap-rewriteurl, sap-url-session-id",
 
-
+            //SetResponseHeader Access-Control-Allow-Credentials true
+            //SetResponseHeader Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS"
+            //SetResponseHeader Access-Control-Allow-Headers "X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2"
+            //SetResponseHeader Access-Control-Expose-Headers "x-csrf-token, sap-rewriteurl, sap-url-session-id"
             //'Authorization': 'Bearer <your_access_token>' Include your access token here
+
           },
           body: JSON.stringify(data)
         };
