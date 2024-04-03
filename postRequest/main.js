@@ -68,7 +68,7 @@
         this._link_href.textContent = this._DimensionId
         this._link_href.href        = this._link
 
-        const url = `https://${this._ServerSAP}/${this._ODataService}`;
+        const url = `https://${this._ServerSAP}/${this._ODataService}?sap-client=612`;
 
         // Data to be posted
         const data = {
