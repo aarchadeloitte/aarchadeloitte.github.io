@@ -29,22 +29,22 @@
 
       setServerSAP (ServerSAP) {
         this._ServerSAP = ServerSAP
-        this.render()
+        
       }
 
       setODataServiceSAP (ODataService) {
         this._ODataService = ODataService
-        this.render()
+    
       }
 
       setPostData (postData) {
         this._postData = postData
-        this.render()
+        
       }
 
       setDimensionId (DimensionId) {
         this._DimensionId = DimensionId
-        this.render()
+        
       }
       
       getLink () {
