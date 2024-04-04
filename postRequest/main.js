@@ -87,7 +87,7 @@
 
 
         const options = {
-          method: 'GET',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
@@ -107,7 +107,7 @@
             //'Authorization': 'Bearer <your_access_token>' Include your access token here
 
           },
-          //body: JSON.stringify(data)
+          body: JSON.stringify(data)
         };
 
           // Perform the fetch request
@@ -124,10 +124,6 @@
         .catch(error => {
           console.error('Error:', error);
         });
-
-
-        
-
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
