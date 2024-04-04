@@ -24,7 +24,6 @@
 
       setLink (link) {
         this._link = link
-        this.render()
       }
 
       setServerSAP (ServerSAP) {
@@ -34,7 +33,7 @@
 
       setODataServiceSAP (ODataService) {
         this._ODataService = ODataService
-    
+        this.render()
       }
 
       setPostData (postData) {
@@ -131,9 +130,6 @@
         if (!dataBinding || dataBinding.state !== 'success') {
           return
         }
-
-
-        
       }
     }
   
