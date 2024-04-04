@@ -92,7 +92,7 @@
             'Cache-Control': 'public, max-age=30',
             'Access-Control-Allow-Headers': 'Authorization',
             'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
-            'Access-Control-Expose-Headers': 'Content-Security-Policy, Location',
+            'Access-Control-Expose-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
             'Access-Control-Max-Age': '600'
             
             //'Access-Control-Allow-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
