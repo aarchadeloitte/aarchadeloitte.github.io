@@ -90,7 +90,7 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': true,
             'Cache-Control': 'no-cache',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept,X-CSRF-TOKEN,X-SAP-CID,AUTHORIZATION,MYSAPSSO2,X-REQUEST-WITH,SAP-REWRITEURL,SAP-URL-SESSION-ID,CONTENT-TYPE,ACCEPT-LANGUAGE,IF-',
