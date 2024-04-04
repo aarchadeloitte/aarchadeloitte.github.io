@@ -91,10 +91,13 @@
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': true,
             'Cache-Control': 'public, max-age=30',
+            'Access-Control-Allow-Headers': 'Authorization',
             'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
-            'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
-            'Access-Control-Expose-Headers': "x-csrf-token, sap-rewriteurl, sap-url-session-id",
-
+            'Access-Control-Expose-Headers': 'Content-Security-Policy, Location',
+            'Access-Control-Max-Age': '600'
+            
+            //'Access-Control-Allow-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
+            //'Access-Control-Expose-Headers': "x-csrf-token, sap-rewriteurl, sap-url-session-id",
             //SetResponseHeader Access-Control-Allow-Credentials true
             //SetResponseHeader Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS"
             //SetResponseHeader Access-Control-Allow-Headers "X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2"
