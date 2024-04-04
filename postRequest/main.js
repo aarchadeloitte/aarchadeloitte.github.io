@@ -90,21 +90,24 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://f1sappl0.test.sozvers.at:44320',
             'Access-Control-Allow-Credentials': true,
             'Cache-Control': 'no-cache',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept,X-CSRF-TOKEN,X-SAP-CID,AUTHORIZATION,MYSAPSSO2,X-REQUEST-WITH,SAP-REWRITEURL,SAP-URL-SESSION-ID,CONTENT-TYPE,ACCEPT-LANGUAGE,IF-',
+            'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
             'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
-            'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
+            'Access-Control-Expose-Headers': 'x-csrf-token',
             'Access-Control-Max-Age': '60'
             
-            //'Access-Control-Allow-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
-            //'Access-Control-Expose-Headers': "x-csrf-token, sap-rewriteurl, sap-url-session-id",
+            //SetResponseHeader Access-Control-Allow-Origin %{HEADER:ORIGIN}
             //SetResponseHeader Access-Control-Allow-Credentials true
             //SetResponseHeader Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS"
             //SetResponseHeader Access-Control-Allow-Headers "X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2"
-            //SetResponseHeader Access-Control-Expose-Headers "x-csrf-token, sap-rewriteurl, sap-url-session-id"
-            //'Authorization': 'Bearer <your_access_token>' Include your access token here
+            //SetResponseHeader Access-Control-Expose-Headers "x-csrf-token"
+            //SetResponseHeader Access-Control-Max-Age 600
+   
+
+
+
 
           },
           body: JSON.stringify(data)
