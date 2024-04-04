@@ -87,7 +87,7 @@
 
 
         const options = {
-          method: 'POST',
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
