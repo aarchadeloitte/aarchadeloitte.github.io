@@ -107,7 +107,7 @@
             //'Authorization': 'Bearer <your_access_token>' Include your access token here
 
           },
-          body: JSON.stringify(data)
+          //body: JSON.stringify(data)
         };
 
           // Perform the fetch request
