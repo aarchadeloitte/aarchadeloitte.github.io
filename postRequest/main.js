@@ -83,17 +83,20 @@
           ]
         };
         // Options for the fetch request
+
+
+
         const options = {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
             'Access-Control-Allow-Credentials': true,
-            'Cache-Control': 'public, max-age=30',
-            'Access-Control-Allow-Headers': 'Authorization',
+            'Cache-Control': 'no-cache',
+            'Access-Control-Allow-Headers': 'X-CSRF-TOKEN,X-SAP-CID,AUTHORIZATION,MYSAPSSO2,X-REQUEST-WITH,SAP-REWRITEURL,SAP-URL-SESSION-ID,CONTENT-TYPE,ACCEPT-LANGUAGE,IF-',
             'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
-            'Access-Control-Expose-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
-            'Access-Control-Max-Age': '600'
+            'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
+            'Access-Control-Max-Age': '60'
             
             //'Access-Control-Allow-Headers': 'Content-Security-Policy, Location, X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
             //'Access-Control-Expose-Headers': "x-csrf-token, sap-rewriteurl, sap-url-session-id",
