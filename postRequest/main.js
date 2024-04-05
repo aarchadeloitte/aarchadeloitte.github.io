@@ -88,6 +88,7 @@
 
         const options = {
           method: 'POST',
+          credentials:"include",
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
@@ -96,20 +97,7 @@
             'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
             'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
             'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
-            'Access-Control-Max-Age': '60',
-            'Cookie': 'MYSAPSSO2=AjQxMDMBABgzADEANgAwADEAMwAwADYAIAAgACAAIAACAAY2ADEAMgADABBGADEAUwAgACAAIAAgACAABAAYMgAwADIANAAwADQAMAA0ADEAMAAwADkABQAEAAAACAYAAlgACQACRAD%2fAVcwggFTBgkqhkiG9w0BBwKgggFEMIIBQAIBATELMAkGBSsOAwIaBQAwCwYJKoZIhvcNAQcBMYIBHzCCARsCAQEwcDBkMQswCQYDVQQGEwJERTEcMBoGA1UEChMTU0FQIFRydXN0IENvbW11bml0eTETMBEGA1UECxMKU0FQIFdlYiBBUzEUMBIGA1UECxMLSTAwMjExNTA5NjkxDDAKBgNVBAMTA0YxUwIICiAkAhQRRAEwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MDQwNDEwMDkyM1owIwYJKoZIhvcNAQkEMRYEFFKmJ39qZb4%2f9jXi4O1qO6pLiXNoMAkGByqGSM44BAMELzAtAhQF%2f78zdawNW0I5CCI3B1j%2f%21tYLyAIVAJG%2ffYW71edI370nEM4XYj7m7xyz; SAP_SESSIONID_F1S_612=rb_HmCNhw2AlexhpPn-e9mfkzDHynBHujhP6HVbqiyA%3d; sap-ssolist=O3I9ZjFzYXBwbDBfRjFTXzIwXzY2Nl9FNjEwRTZGOTI2NzQ4QjExMEMxNTQxNDMxOTExQ0E3QjIzNjQ0OUU3; sap-usercontext=sap-language=DE&sap-client=666; SAP_SESSIONID_F1S_666=WiCU5Fsyh-i58G4ofxqn7oZu8HPynBHujhP6HVbqiyA%3d'
-            
-            //SetResponseHeader Access-Control-Allow-Origin %{HEADER:ORIGIN}
-            //SetResponseHeader Access-Control-Allow-Credentials true
-            //SetResponseHeader Access-Control-Allow-Methods "GET, POST, PUT, OPTIONS"
-            //SetResponseHeader Access-Control-Allow-Headers "X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2"
-            //SetResponseHeader Access-Control-Expose-Headers "x-csrf-token"
-            //SetResponseHeader Access-Control-Max-Age 600
-   
-
-
-
-
+            'Access-Control-Max-Age': '60'
           },
           body: JSON.stringify(data)
         };
