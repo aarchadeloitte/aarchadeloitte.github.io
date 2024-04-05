@@ -91,7 +91,7 @@
           credentials:"include",
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
+            //'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
             //'Access-Control-Allow-Credentials': 'true',
             //'Cache-Control': 'no-cache',
             //'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
