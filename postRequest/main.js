@@ -98,7 +98,9 @@
           
           xhr.setRequestHeader('Cache-Control', 'no-cache');
 
-          xhr.setRequestHeader('Sec-Fetch-Dest', 'empty');
+          xhr.setRequestHeader("X-CSRF-Token", csrfToken ? csrfToken : "Fetch");
+          xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
+          xhr.setRequestHeader("cache-control", "no-cache");
 
           xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST');
