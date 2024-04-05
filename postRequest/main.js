@@ -78,7 +78,7 @@
           credentials:"include",
           headers: {
             'Content-Type': 'application/json',
-            //'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
+            //'Access-Control-Allow-Origin': 'itsvac-test.eu20.hcs.cloud.sap',
             //'Access-Control-Allow-Credentials': 'true',
             //'Cache-Control': 'no-cache',
             'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2'
@@ -102,7 +102,7 @@
           xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader("cache-control", "no-cache");
 
-          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+          xhr.setRequestHeader('Access-Control-Allow-Origin', 'itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST');
           xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
           xhr.withCredentials = true;
