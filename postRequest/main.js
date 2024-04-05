@@ -93,6 +93,7 @@
           xhr.open('GET', url, true);
           xhr.setRequestHeader('Content-type', 'application/json');
           xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
+          
           xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST');
           xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
