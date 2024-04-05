@@ -94,7 +94,7 @@
             //'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
             //'Access-Control-Allow-Credentials': 'true',
             //'Cache-Control': 'no-cache',
-            //'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2',
+            'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2'
             //'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
             //'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
             //'Access-Control-Max-Age': '60'
