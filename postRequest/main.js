@@ -93,18 +93,14 @@
           xhr.open('GET', url, true);
           xhr.setRequestHeader('Content-type', 'application/json');
           xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
-
           xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
-          
           xhr.setRequestHeader('Cache-Control', 'no-cache');
-
           xhr.setRequestHeader("X-CSRF-Token", "Fetch");
           xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
-          xhr.setRequestHeader("cache-control", "no-cache");
-
-          xhr.setRequestHeader('Access-Control-Allow-Origin', 'itsvac-test.eu20.hcs.cloud.sap');
-          xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST');
-          xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
+          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+          xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
+          xhr.setRequestHeader('Access-Control-Allow-Headers', 'setcookie, origin, accept, maxdataserviceversion, x-csrf-token,apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With,X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
+          xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
           xhr.withCredentials = true;
 
           xhr.onload = function () {
