@@ -69,25 +69,12 @@
 
         const url = `https://${this._ServerSAP}/${this._ODataService}`;
 
-        // Data to be posted
-        const data = {
-          "@odata.context" : "$metadata#Project/$entity",
-          "@odata.metadataEtag" : "W/\"20240325184749\"",
-          "ProjectExternalID" : "B-11-00015",
-          "ProjectDescription" : "HKH Pav. 7",
-          "ProjectProfileCode" : "1000",
-          "CompanyCode" : "1000",
-          "ControllingArea" : "1000",
-          "SAP__Messages" : [
-        
-          ]
-        };
         // Options for the fetch request
 
 
 
         const options = {
-          method: 'POST',
+          method: 'GET',
           credentials:"include",
           headers: {
             'Content-Type': 'application/json',
@@ -98,24 +85,22 @@
             //'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
             //'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
             //'Access-Control-Max-Age': '60'
-          },
-          body: JSON.stringify(data)
+          }
         };
 
           // Perform the fetch request
-        fetch(url, options)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to perform POST request');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('POST request successful:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.setRequestHeader('Content-type', 'application/json');
+          xhr.setRequestHeader('Content-type', 'application/json');
+          xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
+
+          xhr.onload = function () {
+              // do something to response
+              console.log(this.responseText);
+          };
+          xhr.send();
+          
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
