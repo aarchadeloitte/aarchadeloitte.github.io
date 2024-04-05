@@ -98,7 +98,7 @@
           
           xhr.setRequestHeader('Cache-Control', 'no-cache');
 
-          xhr.setRequestHeader("X-CSRF-Token", csrfToken ? csrfToken : "Fetch");
+          xhr.setRequestHeader("X-CSRF-Token", "Fetch");
           xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader("cache-control", "no-cache");
 
