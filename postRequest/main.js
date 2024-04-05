@@ -96,14 +96,14 @@
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST');
           xhr.setRequestHeader('Access-Control-Allow-Headers', 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
-
+          xhr.withCredentials = true;
+          
           xhr.onload = function () {
               // do something to response
               console.log(this.responseText);
           };
           xhr.send();
           
-
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
