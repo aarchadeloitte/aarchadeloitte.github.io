@@ -89,6 +89,7 @@
         };
 
           // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
+          var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
           xhrGet.send();//xhr.send(data);
