@@ -115,6 +115,9 @@
 
           getcsrfToken().then(datacsrfToken => {datacsrfToken;});
             
+          const __datacsrfToken = document.querySelector('meta[name="csrf-token"]').content;
+          const __alldata = document.querySelector('meta[]').content;
+
 
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
@@ -157,7 +160,7 @@
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('X-CSRF-Token', datacsrfToken);
+          xhr.setRequestHeader('X-CSRF-Token', __datacsrfToken);
           //xhr.setRequestHeader('Access-Control-Allow-Headers',);
 
           //xhr.setRequestHeader('Access-Control-Allow-Headers',
