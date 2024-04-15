@@ -128,7 +128,7 @@
 
 
         const options2 = {
-          method: 'POST',
+          method: 'GET',
           credentials:"include",
           headers: {
             'X-CSRF-Token'      : 'Fetch',
