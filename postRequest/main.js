@@ -146,7 +146,7 @@
             "SAP__Messages" : [
             ]
           };
-
+          
           // Step 2. Send POST request
           var xhr = new XMLHttpRequest();
           xhr.open('POST', url, true);
@@ -174,7 +174,7 @@
               // do something to response
               console.log(this.responseText);
           };
-          xhr.send(data);//xhr.send(data);
+          xhr.send(JSON.stringify(data));//xhr.send(data);
           
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
