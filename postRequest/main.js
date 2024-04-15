@@ -201,9 +201,15 @@
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('Access-Control-Allow-Headers', 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token, origin, accept, apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With, x-sap-cid, Authorization, mysapsso2');
+          //xhr.setRequestHeader('Access-Control-Allow-Headers',);
+
+          //xhr.setRequestHeader('Access-Control-Allow-Headers',
+          //'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token, origin, accept, apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With, x-sap-cid, Authorization, mysapsso2'
+         //);
+
+
          //x-csrf-token X-Csrf-Token, x-csrf-token
-          xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
+          //xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
           xhr.withCredentials = true;
 
           
