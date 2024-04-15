@@ -142,26 +142,15 @@
           // Other options like credentials, mode, etc., can be included here
         };
 
-        // Send the GET request
-        fetch(url, options2)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            // Parse the JSON response
-            return response.json();
-          })
-          .then(data => {
-            // Handle the JSON response data
-            console.log('Response data:', data);
-          })
-          .catch(error => {
-            // Handle any errors that occur during the fetch request
-            console.error('Fetch error:', error);
-          });
-
-
-
+        fetch(url,options2)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(responseJson);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    
 
 
 
