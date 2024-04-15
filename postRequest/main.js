@@ -89,6 +89,8 @@
         };
 
           // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
+          //  'Cache-Control': 'no-cache',
+          //'Content-type'      : 'application/json',
 
           async function getcsrfToken() {
             const response = await fetch(url,{
@@ -97,17 +99,20 @@
               credentials: 'include',
               headers: {
                   'X-CSRF-Token'      : 'Fetch',
-                  'Content-type'      : 'application/json',
+                  
                   'Access-Control-Allow-Credentials': true,
-                  'Cache-Control': 'no-cache',
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
-                  'Access-Control-Allow-Methods': 'GET'
+                  'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE'
                 }
               }
             );
             
             const datacsrfToken = await response.json();
             console.log(datacsrfToken);
+            console.log('POSTTTTTTTT');
+            const _datacsrfToken_ = await response.headers.get('X-CSRF-Token');
+            console.log(_datacsrfToken_);
+
             return datacsrfToken;
           };
           
