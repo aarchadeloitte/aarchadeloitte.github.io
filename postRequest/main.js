@@ -88,11 +88,16 @@
           }
         };
 
+          // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
+          xhrGet.open('GET', url, true);
+          xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
+          xhrGet.send();//xhr.send(data);
+          
           // Data to be posted
-          const data1 = {
+          const data = {
             "@odata.context" : "$metadata#Project/$entity",
             "@odata.metadataEtag" : "W/\"20240325184749\"",
-            "ProjectExternalID" : "B-11-00055",
+            "ProjectExternalID" : "B-11-00099",
             "ProjectDescription" : "HKH Pav. 7",
             "ProjectProfileCode" : "1000",
             "CompanyCode" : "1000",
@@ -100,107 +105,19 @@
             "SAP__Messages" : [
             ]
           };
-          
-          const data = {
-            "@odata.context" : "$metadata#Project/$entity",
-            "@odata.metadataEtag" : "W/\"20240325184749\"",
-          
-            "ProjectExternalID" : "B-11-00027",
-            "ProjectDescription" : "HKH Pav. 7",
-            "ProjectLangBsdDescription" : "",
-            "ProjectProfileCode" : "1000",
-            "CompanyCode" : "1000",
-            "ControllingArea" : "1000",
-            "FunctionalArea" : "",
-            "ProfitCenter" : "",
-            "PlannedStartDate" : null,
-            "PlannedEndDate" : "2024-04-15",
-            "WorkCenterLocation" : "",
-            "TaxJurisdiction" : "",
-            "ResponsiblePerson" : "0",
-            "ResponsiblePersonName" : "",
-            "ApplicantCode" : "0",
-            "ApplicantName" : "",
-            "CreatedByUser" : "31601306",
-            "CreationDate" : "2024-04-15",
-            "LastChangedByUser" : "",
-            "LastChangeDate" : null,
-            "BasicDatesLastScheduledDate" : null,
-            "FcstdDatesLastScheduledDate" : null,
-            "FactoryCalendar" : "AT",
-            "SchedulingDurationUnit" : "DAY",
-            "ForecastedStartDate" : null,
-            "ForecastedEndDate" : null,
-            "BusinessArea" : "",
-            "Plant" : "",
-            "Currency" : "EUR",
-            "BudgetProfile" : "1000",
-            "PlanningProfile" : "000001",
-            "InvestmentProfile" : "",
-            "ProjInterestCalcProfile" : "",
-            "ResultAnalysisInternalID" : "",
-            "ControllingObjectClass" : "IV",
-            "NetworkProfile" : "0000002",
-            "WBSSchedulingProfile" : "000000000001",
-            "PlanningMethForProjBasicDate" : "3",
-            "PlanningMethForProjFcstdDate" : "3",
-            "NetworkAssignmentType" : "2",
-            "WBSIsStatisticalWBSElement" : true,
-            "WBSIsMarkedForIntegratedPlng" : false,
-            "ProjectHasOwnStock" : false,
-            "InventorySpecialStockValnType" : "",
-            "WBSIsMarkedForAutomReqmtGrpg" : false,
-            "SalesOrganization" : "",
-            "DistributionChannel" : "",
-            "Language" : "",
-            "WBSElementMaskID" : "",
-            "Division" : "",
-            "DynItemProcessorPrfl" : "",
-            "JointVenture" : "",
-            "JointVentureCostRecoveryCode" : "",
-            "JointVentureEquityType" : "",
-            "JointVentureObjectType" : "",
-            "JntIntrstBillgClass" : "",
-            "JntIntrstBillgSubClass" : "",
-            "StatusProfile" : "PS000001",
-            "WBSStatusProfile" : "PS000002",
-            "SimulationProfile" : "",
-            "SchedulingScenario" : "",
-            "DistributionProfile" : "",
-            "PartnerDeterminationProcedure" : "",
-            "FreeDefinedTableFieldSemantic" : "",
-            "FreeDefinedAttribute01" : "",
-            "FreeDefinedAttribute02" : "",
-            "FreeDefinedAttribute03" : "",
-            "FreeDefinedAttribute04" : "",
-            "FreeDefinedQuantity1" : 0.000,
-            "FreeDefinedQuantity1Unit" : "",
-            "FreeDefinedQuantity2" : 0.000,
-            "FreeDefinedQuantity2Unit" : "",
-            "FreeDefinedAmount1" : 0.00,
-            "FreeDefinedAmount1Currency" : "",
-            "FreeDefinedAmount2" : 0.00,
-            "FreeDefinedAmount2Currency" : "",
-            "FreeDefinedDate1" : null,
-            "FreeDefinedDate2" : null,
-            "FreeDefinedIndicator1" : false,
-            "FreeDefinedIndicator2" : false,
-            "StatusCombinationCode" : 0,
-            "SAP__Messages" : [
-          
-            ]
-          }
-          // Perform the fetch request
+          var csrf = document.querySelector('meta[name="csrf-token"]').content;
+
+          // Step 2. Send POST request
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', url, true);
+          xhr.open('POST', url, true);
           xhr.setRequestHeader('Content-type', 'application/json');
           xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
           xhr.setRequestHeader('Cache-Control', 'no-cache');
-          xhr.setRequestHeader("X-CSRF-Token", "Fetch");
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
+          xhr.setRequestHeader('X-CSRF-Token', csrf);
           //xhr.setRequestHeader('Access-Control-Allow-Headers',);
 
           //xhr.setRequestHeader('Access-Control-Allow-Headers',
@@ -217,7 +134,7 @@
               // do something to response
               console.log(this.responseText);
           };
-          xhr.send();//xhr.send(data);
+          xhr.send(data);//xhr.send(data);
           
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
