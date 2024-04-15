@@ -97,7 +97,6 @@
               credentials: 'include',
               headers: {
                   'X-CSRF-Token'      : 'Fetch',
-                  'X-Requested-With'  : 'X',
                   'Content-type'      : 'application/json',
                   'Access-Control-Allow-Credentials': true,
                   'Cache-Control': 'no-cache',
