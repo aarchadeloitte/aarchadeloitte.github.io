@@ -96,8 +96,9 @@
               method: 'GET',
               credentials: 'include',
               headers: {
-                  'X-CSRF-Token': 'Fetch',
-                  'Content-type': 'application/json',
+                  'X-CSRF-Token'      : 'Fetch',
+                  'X-Requested-With'  : 'X',
+                  'Content-type'      : 'application/json',
                   'Access-Control-Allow-Credentials': true,
                   'Cache-Control': 'no-cache',
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
@@ -105,7 +106,7 @@
                 }
               }
             );
-
+            
             const datacsrfToken = await response.json();
             console.log(datacsrfToken);
             return datacsrfToken;
@@ -156,7 +157,7 @@
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('X-CSRF-Token', 'AyN_Ot-O10VNyyxwKomwWg==');
+          xhr.setRequestHeader('X-CSRF-Token', datacsrfToken);
           //xhr.setRequestHeader('Access-Control-Allow-Headers',);
 
           //xhr.setRequestHeader('Access-Control-Allow-Headers',
