@@ -112,8 +112,9 @@
           xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('Access-Control-Allow-Headers', 'setcookie, origin, accept, maxdataserviceversion, x-csrf-token,apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With,X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2');
-         // xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
+          xhr.setRequestHeader('Access-Control-Allow-Headers', 'setcookie, origin, accept, maxdataserviceversion,apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With, x-sap-cid, Content-Type, Authorization, mysapsso2');
+         //x-csrf-token X-Csrf-Token, x-csrf-token
+          // xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
           xhr.withCredentials = true;
 
           
