@@ -90,7 +90,9 @@
 
           // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
 
-          await fetch(url, {
+          async function getcsrfToken() {
+            const response = await fetch(url,{
+
               method: 'GET',
               credentials: 'include',
               headers: {
@@ -101,9 +103,12 @@
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
                   'Access-Control-Allow-Methods': 'GET'
               }
-          })
-          .then(response => {const csrfToken = response.headers;})
-          .then(data => {   console.log(data);});
+          });
+            const datacsrfToken = await response.json();
+            console.log(datacsrfToken);};
+          
+
+
 
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
