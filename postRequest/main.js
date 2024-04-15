@@ -117,6 +117,70 @@
           };
           
 
+
+
+
+
+
+
+
+
+
+
+
+
+        // Options for the fetch request (optional)
+        const options = {
+          method: 'GET', // HTTP method
+          headers: {
+            'X-CSRF-Token'      : 'Fetch',
+            'Access-Control-Allow-Credentials': true,
+            'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
+            'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
+            'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
+          },
+          // Other options like credentials, mode, etc., can be included here
+        };
+
+        // Send the GET request
+        fetch(url, options)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            // Parse the JSON response
+            return response.json();
+          })
+          .then(data => {
+            // Handle the JSON response data
+            console.log('Response data:', data);
+          })
+          .catch(error => {
+            // Handle any errors that occur during the fetch request
+            console.error('Fetch error:', error);
+          });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           getcsrfToken().then(datacsrfToken => {datacsrfToken;});
             
           //const __datacsrfToken = document.querySelector('meta[name="csrf-token"]').content;
