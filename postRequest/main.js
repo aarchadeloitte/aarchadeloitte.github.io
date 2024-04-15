@@ -102,13 +102,18 @@
                   'Cache-Control': 'no-cache',
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
                   'Access-Control-Allow-Methods': 'GET'
+                }
               }
-          });
+            );
+
             const datacsrfToken = await response.json();
-            console.log(datacsrfToken);};
+            console.log(datacsrfToken);
+            return datacsrfToken;
+          };
           
 
-
+          getcsrfToken().then(datacsrfToken => {datacsrfToken;});
+            
 
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
