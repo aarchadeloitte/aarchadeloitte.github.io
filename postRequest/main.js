@@ -89,6 +89,20 @@
         };
 
           // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
+
+          fetch(url, {
+              method: 'GET',
+              headers: {
+                  'X-CSRF-Token': 'Fetch',
+                  'Content-type': 'application/json',
+                  'Access-Control-Allow-Credentials': true,
+                  'Cache-Control': 'no-cache',
+                  'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
+                  'Access-Control-Allow-Methods': 'GET'
+              }
+          })
+          .then(response => {const csrfToken = response.headers.get('X-CSRF-Token');});
+        
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
@@ -102,17 +116,8 @@
           xhrGet.onload = function () {
             // do something to response
             console.log(this.responseText);
-          };
-
-          xhrGet.onreadystatechange = function() {
-            if (xhrGet.status === 200) {
-              var csrfToken = xhrGet.getResponseHeader('X-CSRF-Token');
-              console.log('CSRF Token:', csrfToken);
-            } else {
-              console.error('Request failed with status:', xhrGet.status);
-            }
-          };
-          
+          }; 
+                   
           xhrGet.send();
 
           
