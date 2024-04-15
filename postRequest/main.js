@@ -102,8 +102,9 @@
                   'Access-Control-Allow-Methods': 'GET'
               }
           })
-          .then(response => {const csrfToken = response.headers.get('X-CSRF-Token');});
-        
+          .then(response => {const csrfToken = response.headers;})
+          .then(data => {   console.log(data);});
+
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
