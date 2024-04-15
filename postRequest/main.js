@@ -90,7 +90,7 @@
 
           // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
 
-          fetch(url, {
+          await fetch(url, {
               method: 'GET',
               credentials: 'include',
               headers: {
