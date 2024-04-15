@@ -116,8 +116,6 @@
             }
           };
           
-          xhrGet.send();
-          
           
           // Data to be posted
           const data = {
