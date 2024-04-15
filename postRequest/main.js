@@ -104,18 +104,8 @@
             console.log(this.responseText);
           };
           xhrGet.send();
+          var csrfToken = xhrGet.getResponseHeader('X-CSRF-Token');
 
-          xhrGet.onreadystatechange = function() {
-            if (xhrGet.readyState === XMLHttpRequest.DONE) {
-              if (xhrGet.status === 200) {
-                var csrfToken = xhrGet.getResponseHeader('X-CSRF-Token');
-                console.log('CSRF Token:', csrfToken);
-              } else {
-                console.error('Request failed with status:', xhrGet.status);
-              }
-            }
-          };
-          
           
           // Data to be posted
           const data = {
