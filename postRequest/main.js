@@ -92,6 +92,7 @@
 
           fetch(url, {
               method: 'GET',
+              credentials: 'include',
               headers: {
                   'X-CSRF-Token': 'Fetch',
                   'Content-type': 'application/json',
@@ -117,7 +118,7 @@
             // do something to response
             console.log(this.responseText);
           }; 
-                   
+
           xhrGet.send();
 
           
