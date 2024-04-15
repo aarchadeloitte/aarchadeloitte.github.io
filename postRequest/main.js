@@ -99,10 +99,10 @@
               credentials: 'include',
               headers: {
                   'X-CSRF-Token'      : 'Fetch',
-                  
                   'Access-Control-Allow-Credentials': true,
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
-                  'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE'
+                  'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
+                  'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
                 }
               }
             );
