@@ -92,6 +92,11 @@
           var xhrGet = new XMLHttpRequest();
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
+          xhrGet.setRequestHeader('Content-type', 'application/json');
+          xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
+          xhrGet.setRequestHeader('Cache-Control', 'no-cache');
+          xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
+          xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.send();//xhr.send(data);
           
           // Data to be posted
