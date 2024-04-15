@@ -130,7 +130,7 @@
 
 
         // Options for the fetch request (optional)
-        const options = {
+        const options2 = {
           method: 'GET', // HTTP method
           headers: {
             'X-CSRF-Token'      : 'Fetch',
@@ -143,7 +143,7 @@
         };
 
         // Send the GET request
-        fetch(url, options)
+        fetch(url, options2)
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
