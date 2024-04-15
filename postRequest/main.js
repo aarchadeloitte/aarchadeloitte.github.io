@@ -103,7 +103,21 @@
             // do something to response
             console.log(this.responseText);
           };
-          xhrGet.send();//xhr.send(data);
+          xhrGet.send();
+
+          xhrGet.onreadystatechange = function() {
+            if (xhrGet.readyState === XMLHttpRequest.DONE) {
+              if (xhrGet.status === 200) {
+                var csrfToken = xhrGet.getResponseHeader('X-CSRF-Token');
+                console.log('CSRF Token:', csrfToken);
+              } else {
+                console.error('Request failed with status:', xhrGet.status);
+              }
+            }
+          };
+          
+          xhrGet.send();
+          
           
           // Data to be posted
           const data = {
@@ -117,7 +131,6 @@
             "SAP__Messages" : [
             ]
           };
-          var csrf = document.querySelector('meta[name="csrf-token"]').content;
 
           // Step 2. Send POST request
           var xhr = new XMLHttpRequest();
@@ -129,7 +142,7 @@
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('X-CSRF-Token', csrf);
+          xhr.setRequestHeader('X-CSRF-Token', csrfToken);
           //xhr.setRequestHeader('Access-Control-Allow-Headers',);
 
           //xhr.setRequestHeader('Access-Control-Allow-Headers',
