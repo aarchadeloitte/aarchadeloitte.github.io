@@ -97,6 +97,12 @@
           xhrGet.setRequestHeader('Cache-Control', 'no-cache');
           xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
+          xhrGet.withCredentials = true;
+
+          xhrGet.onload = function () {
+            // do something to response
+            console.log(this.responseText);
+          };
           xhrGet.send();//xhr.send(data);
           
           // Data to be posted
