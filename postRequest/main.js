@@ -74,7 +74,7 @@
 
 
         const options = {
-          method: 'GET',
+          method: 'POST',
           credentials:"include",
           headers: {
             'Content-Type': 'application/json',
@@ -88,9 +88,22 @@
           }
         };
 
+          // Data to be posted
+          const data = {
+            "@odata.context" : "$metadata#Project/$entity",
+            "@odata.metadataEtag" : "W/\"20240325184749\"",
+            "ProjectExternalID" : "B-11-00055",
+            "ProjectDescription" : "HKH Pav. 7",
+            "ProjectProfileCode" : "1000",
+            "CompanyCode" : "1000",
+            "ControllingArea" : "1000",
+            "SAP__Messages" : [
+            ]
+          };
+        
           // Perform the fetch request
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', url, true);
+          xhr.open('POST', url, true);
           xhr.setRequestHeader('Content-type', 'application/json');
           xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
@@ -108,7 +121,7 @@
               // do something to response
               console.log(this.responseText);
           };
-          xhr.send();
+          xhr.send(data);
           
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
