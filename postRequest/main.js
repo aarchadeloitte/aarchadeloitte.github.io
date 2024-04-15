@@ -114,8 +114,8 @@
 
           getcsrfToken().then(datacsrfToken => {datacsrfToken;});
             
-          const __datacsrfToken = document.querySelector('meta[name="csrf-token"]').content;
-          const __alldata = document.querySelector('meta[]').content;
+          //const __datacsrfToken = document.querySelector('meta[name="csrf-token"]').content;
+          //const __alldata = document.querySelector('meta[]').content;
 
 
           var xhrGet = new XMLHttpRequest();
@@ -126,6 +126,7 @@
           xhrGet.setRequestHeader('Cache-Control', 'no-cache');
           xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
+          xhrGet.setRequestHeader('Access-Control-Allow-Headers','setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token');
           xhrGet.withCredentials = true;
 
           xhrGet.onload = function () {
@@ -159,7 +160,7 @@
           //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('X-CSRF-Token', __datacsrfToken);
+          xhr.setRequestHeader('X-CSRF-Token', '');
           //xhr.setRequestHeader('Access-Control-Allow-Headers',);
 
           //xhr.setRequestHeader('Access-Control-Allow-Headers',
