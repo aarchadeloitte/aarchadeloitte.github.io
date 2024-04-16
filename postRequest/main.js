@@ -87,6 +87,9 @@
              
         xhrForHead.setRequestHeader("Content-Type", "application/json")
         xhrForHead.setRequestHeader("X-CSRF-Token", "fetch")
+        xhrForHead.setRequestHeader('Access-Control-Allow-Credentials', true);
+        xhrForHead.withCredentials = true;
+
         xhrForHead.send()
         
 
