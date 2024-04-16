@@ -69,156 +69,15 @@
 
         const url = `https://${this._ServerSAP}/${this._ODataService}`;
 
-        // Options for the fetch request
-
-        var xhrForHead = new XMLHttpRequest()
-        var csrfToken
-         
-        xhrForHead.onreadystatechange = () => {
-            if (xhrForHead.readyState == 4) {
-                csrfToken = xhrForHead.getResponseHeader("X-CSRF-Token")
-            }
-        };
-         
-        xhrForHead.open(
-            "GET",
-            url,
-            true)
-             
-        xhrForHead.setRequestHeader("Content-Type", "application/json")
-        xhrForHead.setRequestHeader("X-CSRF-Token", "fetch")
-        xhrForHead.setRequestHeader("Access-Control-Expose-Headers", "X-CSRF-Token")        
-        xhrForHead.setRequestHeader('Access-Control-Allow-Credentials', true);
-        xhrForHead.withCredentials = true;
-
-        xhrForHead.send()
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        const options = {
-          method: 'POST',
-          credentials:"include",
-          headers: {
-            'Content-Type': 'application/json',
-            //'Access-Control-Allow-Origin': 'itsvac-test.eu20.hcs.cloud.sap',
-            //'Access-Control-Allow-Credentials': 'true',
-            //'Cache-Control': 'no-cache',
-            'Access-Control-Allow-Headers': 'X-Csrf-Token, x-csrf-token, x-sap-cid, Content-Type, Authorization, mysapsso2'
-            //'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
-            //'Access-Control-Expose-Headers': 'X-CSRF-TOKEN,SAP-REWRITEURL,SAP-URL-SESSION-ID,SAP-PERF-FESREC,SAP-SYSTEM',
-            //'Access-Control-Max-Age': '60'
-          }
-        };
-
-          // Step 1. Send GET request to fetch "X-CSRF-Token", "Fetch"
-          //  'Cache-Control': 'no-cache',
-          //'Content-type'      : 'application/json',
-
-          async function getcsrfToken() {
-            const response = await fetch(url,{
-
-              method: 'GET',
-              credentials: 'include',
-              headers: {
-                  'X-CSRF-Token'      : 'Fetch',
-                  'Access-Control-Allow-Credentials': true,
-                  'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
-                  'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
-                  'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token',
-                  'Access-Control-Expose-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
-                }
-              }
-            );
-            
-            const datacsrfToken = await response.json();
-            console.log(datacsrfToken);
-            console.log('POSTTTTTTTT');
-            const _datacsrfToken_ = await response.headers.get('X-CSRF-Token');
-            console.log(_datacsrfToken_);
-
-            return datacsrfToken;
-          };
-          
-
-
-
-
-
-
-
-
-
-
-
-        const options2 = {
-          method: 'GET',
-          credentials:"include",
-          headers: {
-            'X-CSRF-Token'      : 'Fetch',
-            'Access-Control-Allow-Credentials': true,
-            'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
-            'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
-            'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token',
-            'Access-Control-Expose-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
-
-            }
-        };
-
-        fetch(url,options2)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          getcsrfToken().then(datacsrfToken => {datacsrfToken;});
-            
-          //const __datacsrfToken = document.querySelector('meta[name="csrf-token"]').content;
-          //const __alldata = document.querySelector('meta[]').content;
-
 
           var xhrGet = new XMLHttpRequest();
+
+          xhrGet.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                  const responseHeaders = this.getAllResponseHeaders();
+            }
+          };
+          
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
           xhrGet.setRequestHeader('Content-type', 'application/json');
@@ -257,27 +116,17 @@
           xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
           xhr.setRequestHeader('Cache-Control', 'no-cache');
-          //xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
+          xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
           xhr.setRequestHeader('X-CSRF-Token', '');
-          //xhr.setRequestHeader('Access-Control-Allow-Headers',);
-
-          //xhr.setRequestHeader('Access-Control-Allow-Headers',
-          //'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token, origin, accept, apikey, dataserviceversion, accept-language, x-httpmethod,content-type,X-Requested-With, x-sap-cid, Authorization, mysapsso2'
-         //);
-
-
-         //x-csrf-token X-Csrf-Token, x-csrf-token
-          //xhr.setRequestHeader('Access-Control-ExposeHeaders', 'set-cookie, x-csrf-token, x-http-method');
           xhr.withCredentials = true;
 
-          
           xhr.onload = function () {
               // do something to response
               console.log(this.responseText);
           };
-          xhr.send(JSON.stringify(data));//xhr.send(data);
+          xhr.send(JSON.stringify(data));
           
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
