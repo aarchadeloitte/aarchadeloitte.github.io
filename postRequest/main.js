@@ -96,38 +96,6 @@
           xhrGet.send();
 
           
-          // Data to be posted
-          const data = {
-            "@odata.context" : "$metadata#Project/$entity",
-            "@odata.metadataEtag" : "W/\"20240325184749\"",
-            "ProjectExternalID" : "B-11-00099",
-            "ProjectDescription" : "HKH Pav. 7",
-            "ProjectProfileCode" : "1000",
-            "CompanyCode" : "1000",
-            "ControllingArea" : "1000",
-            "SAP__Messages" : [
-            ]
-          };
-          
-          // Step 2. Send POST request
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', url, true);
-          xhr.setRequestHeader('Content-type', 'application/json');
-          xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
-          xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
-          xhr.setRequestHeader('Cache-Control', 'no-cache');
-          xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
-          xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
-          xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
-          xhr.setRequestHeader('X-CSRF-Token', '');
-          xhr.withCredentials = true;
-
-          xhr.onload = function () {
-              // do something to response
-              console.log(this.responseText);
-          };
-          xhr.send(JSON.stringify(data));
-          
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
