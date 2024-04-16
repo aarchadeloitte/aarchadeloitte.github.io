@@ -71,12 +71,6 @@
 
 
           var xhrGet = new XMLHttpRequest();
-
-          xhrGet.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                  const responseHeaders = this.getAllResponseHeaders();
-            }
-          };
           
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
@@ -94,8 +88,19 @@
           }; 
 
           xhrGet.send();
-
+          xhrGet.onreadystatechange = () => {
+            if (xhrGet.readyState === this.HEADERS_RECEIVED) {
+              // Get the raw header string
+              const headers = xhrGet.getAllResponseHeaders();
           
+              // Convert the header string into an array
+              // of individual headers
+              const arr = headers.trim().split(/[\r\n]+/);
+          
+            }
+          };
+          
+
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
