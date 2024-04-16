@@ -71,6 +71,44 @@
 
         // Options for the fetch request
 
+        var xhrForHead = new XMLHttpRequest()
+        var csrfToken
+         
+        xhrForHead.onreadystatechange = () => {
+            if (xhrForHead.readyState == 4) {
+                csrfToken = xhrForHead.getResponseHeader("X-CSRF-Token")
+            }
+        };
+         
+        xhrForHead.open(
+            "HEAD",
+            url,
+            true)
+             
+        xhrForHead.setRequestHeader("Content-Type", "application/json")
+        xhrForHead.setRequestHeader("X-CSRF-Token", "fetch")
+        xhrForHead.send()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         const options = {
