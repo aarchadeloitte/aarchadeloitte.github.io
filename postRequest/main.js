@@ -81,12 +81,13 @@
         };
          
         xhrForHead.open(
-            "HEAD",
+            "GET",
             url,
             true)
              
         xhrForHead.setRequestHeader("Content-Type", "application/json")
         xhrForHead.setRequestHeader("X-CSRF-Token", "fetch")
+        xhrForHead.setRequestHeader("Access-Control-Expose-Headers", "X-CSRF-Token")        
         xhrForHead.setRequestHeader('Access-Control-Allow-Credentials', true);
         xhrForHead.withCredentials = true;
 
@@ -143,7 +144,8 @@
                   'Access-Control-Allow-Credentials': true,
                   'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
                   'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
-                  'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
+                  'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token',
+                  'Access-Control-Expose-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
                 }
               }
             );
@@ -176,7 +178,9 @@
             'Access-Control-Allow-Credentials': true,
             'Access-Control-Allow-Origin': 'https://itsvac-test.eu20.hcs.cloud.sap',
             'Access-Control-Allow-Methods': 'GET,PUT, POST, DELETE',
-            'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
+            'Access-Control-Allow-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token',
+            'Access-Control-Expose-Headers': 'setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token'
+
             }
         };
 
