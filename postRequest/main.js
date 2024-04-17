@@ -77,7 +77,7 @@
           xhrGet.setRequestHeader('x-csrf-token', 'Fetch');
           xhrGet.setRequestHeader('X-CSRF-token', 'Fetch');
           xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
-          xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT, POST, DELETE');
+          xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-xsrf-token');
           xhrGet.withCredentials = true;
