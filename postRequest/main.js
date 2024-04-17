@@ -73,13 +73,12 @@
           var xhrGet = new XMLHttpRequest();
           
           xhrGet.open('GET', url, true);
-          xhrGet.setRequestHeader("X-CSRF-Token", "Fetch");
-          xhrGet.setRequestHeader('Content-type', 'application/json');
+          xhrGet.open('GET', url, true);
+          xhrGet.setRequestHeader('X-CSRF-Token', 'Fetch');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
-          xhrGet.setRequestHeader('Cache-Control', 'no-cache');
-          xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
-          xhrGet.setRequestHeader('Access-Control-Allow-Headers','setcookie, x-csrf-token, X-Csrf-Token, x-csrf-token');
+          xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-CSRF-Token');
+
           xhrGet.withCredentials = true;
 
           xhrGet.onload = function () {
@@ -89,18 +88,18 @@
 
           xhrGet.send();
           xhrGet.onreadystatechange = () => {
-            if (xhrGet.readyState === this.HEADERS_RECEIVED) {
+            if (xhrGet.readyState === 2) {
               // Get the raw header string
               const headers = xhrGet.getAllResponseHeaders();
           
               // Convert the header string into an array
               // of individual headers
               const arr = headers.trim().split(/[\r\n]+/);
+              console.log(arr);
           
             }
           };
           
-
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
