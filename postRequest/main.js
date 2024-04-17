@@ -69,36 +69,31 @@
 
         const url = `https://${this._ServerSAP}/${this._ODataService}`;
 
-
           var xhrGet = new XMLHttpRequest();
           
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader('X-Csrf-Token', 'Fetch');
           xhrGet.setRequestHeader('x-csrf-token', 'Fetch');
           xhrGet.setRequestHeader('X-CSRF-token', 'Fetch');
-          xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
+          xhrGet.setRequestHeader('Access-Control-Allow-Origin', '*');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-xsrf-token');
           xhrGet.withCredentials = true;
 
+          xhrGet.send();
+
           xhrGet.onload = function () {
-            // do something to response
             console.log(this.responseText);
             console.log(this.getAllResponseHeaders());
             console.log(xhrGet.getAllResponseHeaders());
+          };
 
-          }; 
-
-          xhrGet.send();
           xhrGet.onreadystatechange = () => {
             if (xhrGet.readyState === 2) {
-              // Get the raw header string
               const headers = xhrGet.getAllResponseHeaders();
-
               const arr = headers.trim().split(/[\r\n]+/);
               console.log(arr);
-          
             }
           };
           
