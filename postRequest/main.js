@@ -110,7 +110,27 @@
           console.log("DDDDDDDDDDDDDDDDD");
           console.log(responseData);
           console.log("DDDDDDDDDDDDDDDDD");
+
+
         });
+
+
+
+        $.ajax({
+          url: url,
+          method: 'GET',
+          headers:{
+            'X-CSRF-Token': 'Fetch',
+            'Access-Control-Allow-Credentials': true,
+            'Access-Control-Expose-Headers':'X-Csrf-Token'
+          },
+          xhrFields: { withCredentials: true },
+          success: function(data, status, xhr) {
+              var header = xhr.getResponseHeader('X-Csrf-Token');
+              console.log(header);
+          }
+      });
+      
 
 
 
