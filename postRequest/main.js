@@ -122,11 +122,13 @@
           headers:{
             'X-CSRF-Token': 'Fetch',
             'Access-Control-Allow-Credentials': true,
-            'Access-Control-Expose-Headers':'X-Csrf-Token'
+            'Access-Control-Expose-Headers':'X-Csrf-Token',
+            'Access-Control-Allow-Headers': 'Authorization'
+
           },
           xhrFields: { withCredentials: true },
           success: function(data, status, xhr) {
-              var header = xhr.getResponseHeader('X-Csrf-Token');
+              var header = xhr.getAllResponseHeaders();
               console.log(header);
           }
       });
