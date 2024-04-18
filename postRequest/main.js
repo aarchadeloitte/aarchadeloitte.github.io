@@ -76,12 +76,14 @@
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
           xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-csrf-token');
+          xhrGet.setRequestHeader('Content-Type', 'application/json');
+
           xhrGet.withCredentials = true;
 
           xhrGet.send();
 
           xhrGet.onreadystatechange = () => {
-            if (xhrGet.readyState === this.HEADERS_RECEIVED) {
+            if (xhrGet.readyState === 4) {
               const headers = xhrGet.getAllResponseHeaders();
               const arr = headers.trim().split(/[\r\n]+/);
               console.log(arr);
@@ -134,11 +136,6 @@
           }
       });
       
-
-
-
-      const csrfToken = document.head.querySelector("[name~=csrf_token][content]").content;
-
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
