@@ -123,7 +123,8 @@
             'X-CSRF-Token': 'Fetch',
             'Access-Control-Allow-Credentials': true,
             'Access-Control-Expose-Headers':'X-Csrf-Token',
-            'Access-Control-Allow-Headers': 'Authorization'
+            'Access-Control-Allow-Headers': 'Authorization',
+            "Content-Type": 'application/json'
 
           },
           xhrFields: { withCredentials: true },
