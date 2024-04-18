@@ -134,7 +134,8 @@
 
 
 
-  
+      const csrfToken = document.head.querySelector("[name~=csrf_token][content]").content;
+
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
