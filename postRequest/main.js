@@ -124,7 +124,8 @@
             'Access-Control-Allow-Credentials': true,
             'Access-Control-Expose-Headers':'X-Csrf-Token',
             'Access-Control-Allow-Headers': 'Authorization',
-            "Content-Type": 'application/json'
+            'Content-Type': 'application/json',
+            'set-cookie':'fetch'
 
           },
           xhrFields: { withCredentials: true },
