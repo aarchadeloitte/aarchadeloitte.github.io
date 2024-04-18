@@ -93,13 +93,27 @@
               console.log(arr);
             }
           };
-        
+
+          
+
+        $.ajaxSetup({
+            headers:{
+              'X-CSRF-Token': 'Fetch',
+              'Access-Control-Allow-Credentials': true,
+              'Access-Control-Expose-Headers':'X-Csrf-Token'
+            },
+            xhrFields: { withCredentials: true }
+         });
+         
         var responseData;
         $.get(url, function( responseData ) {
           console.log("DDDDDDDDDDDDDDDDD");
           console.log(responseData);
           console.log("DDDDDDDDDDDDDDDDD");
         });
+
+
+
   
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
