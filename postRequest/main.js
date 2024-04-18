@@ -72,13 +72,10 @@
           var xhrGet = new XMLHttpRequest();
           
           xhrGet.open('GET', url, true);
-          xhrGet.setRequestHeader('X-Csrf-Token', 'Fetch');
-          xhrGet.setRequestHeader('x-csrf-token', 'Fetch');
-          xhrGet.setRequestHeader('X-CSRF-token', 'Fetch');
-          xhrGet.setRequestHeader('Access-Control-Allow-Origin', '*');
+          xhrGet.setRequestHeader('X-CSRF-Token', 'Fetch');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
-          xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-xsrf-token');
+          xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-csrf-token');
           xhrGet.withCredentials = true;
 
           xhrGet.send();
@@ -96,7 +93,14 @@
               console.log(arr);
             }
           };
-          
+        
+        var responseData;
+        $.get(url, function( responseData ) {
+          console.log("DDDDDDDDDDDDDDDDD");
+          console.log(responseData);
+          console.log("DDDDDDDDDDDDDDDDD");
+        });
+  
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
