@@ -80,20 +80,19 @@
 
           xhrGet.send();
 
-          xhrGet.onload = function () {
-            console.log(this.responseText);
-            console.log(this.getAllResponseHeaders());
-            console.log(xhrGet.getAllResponseHeaders());
-          };
-
           xhrGet.onreadystatechange = () => {
-            if (xhrGet.readyState === 2) {
+            if (xhrGet.readyState === this.HEADERS_RECEIVED) {
               const headers = xhrGet.getAllResponseHeaders();
               const arr = headers.trim().split(/[\r\n]+/);
               console.log(arr);
             }
           };
 
+          xhrGet.onload = function () {
+            console.log(this.responseText);
+            console.log(this.getAllResponseHeaders());
+            console.log(xhrGet.getAllResponseHeaders());
+          };
           
 
         $.ajaxSetup({
