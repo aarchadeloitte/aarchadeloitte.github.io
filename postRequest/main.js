@@ -75,8 +75,11 @@
           xhrGet.setRequestHeader('X-CSRF-Token', 'Fetch');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
           xhrGet.setRequestHeader('Access-Control-Allow-Credentials', true);
+          xhrGet.setRequestHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, X-Request-With,X-Csrf-Token');
           xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-csrf-token');
+          xhrGet.setRequestHeader('X-Content-Type-Options','application/json');
           xhrGet.setRequestHeader('Content-Type', 'application/json');
+
 
           xhrGet.withCredentials = true;
 
