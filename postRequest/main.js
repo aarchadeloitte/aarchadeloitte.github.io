@@ -105,7 +105,6 @@
               const headers = xhrGet.getAllResponseHeaders();
               const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
               const arr = headers.trim().split(/[\r\n]+/);
-
               xhr.setRequestHeader('Content-type', 'application/json');
               xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
               //xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
