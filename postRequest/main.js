@@ -68,9 +68,22 @@
         this._link_href.href        = this._link
 
         const url = `https://${this._ServerSAP}/${this._ODataService}`;
+          // Data to be posted
+
+        const data = {
+          "@odata.context" : "$metadata#Project/$entity",
+          "@odata.metadataEtag" : "W/\"20240325184749\"",
+          "ProjectExternalID" : "B-33-00099",
+          "ProjectDescription" : "HKH Pav. 7",
+          "ProjectProfileCode" : "1000",
+          "CompanyCode" : "1000",
+          "ControllingArea" : "1000",
+          "SAP__Messages" : [
+          ]
+        };
+
 
           var xhrGet = new XMLHttpRequest();
-          
           xhrGet.open('GET', url, true);
           xhrGet.setRequestHeader('X-CSRF-Token', 'Fetch');
           xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
@@ -79,19 +92,40 @@
           xhrGet.setRequestHeader('Access-Control-Expose-Headers','X-Csrf-Token,x-csrf-token');
           xhrGet.setRequestHeader('Content-Type', 'application/json');
           xhrGet.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
           xhrGet.withCredentials = true;
-
           xhrGet.send();
+
+
+          // Step 2. Send POST request
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', url, true);
 
           xhrGet.onreadystatechange = () => {
             if (xhrGet.readyState === 2) {
               const headers = xhrGet.getAllResponseHeaders();
               const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
               const arr = headers.trim().split(/[\r\n]+/);
-              console.log(arr);
+
+              xhr.setRequestHeader('Content-type', 'application/json');
+              xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
+              //xhr.setRequestHeader('Sec-Fetch-Mode', 'cors');
+              xhr.setRequestHeader('Cache-Control', 'no-cache');
+              xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
+              xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
+              xhr.setRequestHeader('Access-Control-Allow-Methods', 'PUT');
+              xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
+              xhr.withCredentials = true;
+              xhr.onload = function () {
+                  // do something to response
+                  console.log(this.responseText);
+              };
+              xhr.send(JSON.stringify(data));      
+    
             }
           };
+
+
+
 
           xhrGet.onload = function () {
             console.log(this.responseText);
@@ -100,18 +134,6 @@
           };
           
 
-          // Data to be posted
-          const data = {
-            "@odata.context" : "$metadata#Project/$entity",
-            "@odata.metadataEtag" : "W/\"20240325184749\"",
-            "ProjectExternalID" : "B-33-00099",
-            "ProjectDescription" : "HKH Pav. 7",
-            "ProjectProfileCode" : "1000",
-            "CompanyCode" : "1000",
-            "ControllingArea" : "1000",
-            "SAP__Messages" : [
-            ]
-          };
           
           // Step 2. Send POST request
           var xhr = new XMLHttpRequest();
