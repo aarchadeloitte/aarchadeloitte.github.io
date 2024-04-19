@@ -70,7 +70,7 @@
         
         // Data to be posted
         const data = {
-          "ProjectExternalID" : "B-33-00027",
+          "ProjectExternalID" : "B-36-00027",
           "ProjectDescription" : "HKH Pav. 7",
           "ProjectProfileCode" : "1000",
           "CompanyCode" : "1000",
