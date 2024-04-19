@@ -85,7 +85,7 @@
           xhrGet.send();
 
           xhrGet.onreadystatechange = () => {
-            if (xhrGet.readyState === 4) {
+            if (xhrGet.readyState === 2) {
               const headers = xhrGet.getAllResponseHeaders();
               const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
               const arr = headers.trim().split(/[\r\n]+/);
