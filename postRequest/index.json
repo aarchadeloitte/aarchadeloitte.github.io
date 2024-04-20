@@ -77,7 +77,7 @@
         "parameters": [
           {
             "name": "value",
-            "type": "string",
+            "type": "object",
             "description": "Post Data"
           }
         ]

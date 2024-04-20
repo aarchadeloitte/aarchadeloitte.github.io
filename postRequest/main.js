@@ -96,5 +96,5 @@
     }
   }
 
-  customElements.define('com-sap-sac-exercise-aa31', Main)
+  customElements.define('com-sap-sac-aa', Main)
 })()
