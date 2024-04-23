@@ -39,7 +39,6 @@
       return this._link
     }
 
-
     onCustomWidgetResize (width, height) {
     }
 
