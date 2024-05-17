@@ -20,18 +20,9 @@
         this._root      = this._shadowRoot.getElementById('root')
         this._link_href = this._shadowRoot.getElementById('link_href')
 
-        this.x_coordinate = 0
-        this.y_coordinate = 0
+        //this.x_coordinate = 0
+        //this.y_coordinate = 0
 
-        document.addEventListener('click', function(event) {
-          this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
-          this.y_coordinate = event.clientY; // Vertical coordinate of the click event
-          
-          // Output the coordinates
-          console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
-          console.log(typeof(this.x_coordinate));
-          console.log(typeof(this.x_coordinate));
-        });
 
       }
 
@@ -50,10 +41,12 @@
       }
 
       get_X_Coordinate () {
+        this.render()
         return this.x_coordinate
       }
 
       get_Y_Coordinate () {
+        this.render()
         return this.y_coordinate
       }
 
@@ -70,6 +63,17 @@
         
         this._link_href.textContent = this._DimensionId
         this._link_href.href        = this._link
+        
+        document.addEventListener('click', function(event) {
+          this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
+          this.y_coordinate = event.clientY; // Vertical coordinate of the click event
+          
+          // Output the coordinates
+          console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
+          console.log(typeof(this.x_coordinate));
+          console.log(typeof(this.x_coordinate));
+        });
+
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
