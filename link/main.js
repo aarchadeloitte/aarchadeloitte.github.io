@@ -31,17 +31,23 @@
         this._DimensionId = DimensionId
         this.render()
       }
+
       getLink () {
         return this._link
       }
-  
-  
-      onCustomWidgetResize (width, height) {
 
+      get_X_Coordinate () {
+        return this.x_coordinate
+      }
+
+      get_Y_Coordinate () {
+        return this.y_coordinate
+      }
+
+      onCustomWidgetResize (width, height) {
       }
 
       onCustomWidgetAfterUpdate (changedProps) {
-
       }
   
       onCustomWidgetDestroy () {
@@ -49,27 +55,23 @@
   
       async render () {
 
-        this._link_href.textContent = this._DimensionId
-        this._link_href.href        = this._link
-
         document.addEventListener('click', function(event) {
-          var x = event.clientX; // Horizontal coordinate of the click event
-          var y = event.clientY; // Vertical coordinate of the click event
+          this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
+          this.y_coordinate = event.clientY; // Vertical coordinate of the click event
 
           // Output the coordinates
           console.log('Clicked at coordinates: (' + x + ', ' + y + ')');
         });
 
+        this._link_href.textContent = this._DimensionId
+        this._link_href.href        = this._link
+
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
           return
-        }
-
-
-        
+        }    
       }
     }
-  
 
     customElements.define('com-sap-sac-exercise-aa30', Main)
   })()
