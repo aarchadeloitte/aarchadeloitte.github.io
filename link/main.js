@@ -61,6 +61,10 @@
 
           // Output the coordinates
           console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
+          console.log(typeof(this.x_coordinate));
+          console.log(typeof(this.x_coordinate));
+
+
         });
 
         this._link_href.textContent = this._DimensionId
