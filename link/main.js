@@ -20,6 +20,9 @@
         this._root      = this._shadowRoot.getElementById('root')
         this._link_href = this._shadowRoot.getElementById('link_href')
 
+        this.x_coordinate = 0
+        this.y_coordinate = 0
+
       }
 
       setLink (link) {
@@ -37,12 +40,10 @@
       }
 
       get_X_Coordinate () {
-        this.render()
         return this.x_coordinate
       }
 
       get_Y_Coordinate () {
-        this.render()
         return this.y_coordinate
       }
 
