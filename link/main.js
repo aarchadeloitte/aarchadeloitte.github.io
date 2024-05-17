@@ -1,58 +1,63 @@
-
 (function () {
-    const template = document.createElement('template')
-    template.innerHTML = `
-          <style>
-          </style>
-          
-          <div id="root" style="width: 100%; height: 100%;">
-            <p><a id = "link_href" href="https://www.google.com/" target="_blank" ></a></p>
-          </div>
-        `
+  const template = document.createElement('template');
+  template.innerHTML = `
+      <style>
+      </style>
+      
+      <div id="root" style="width: 100%; height: 100%;">
+          <p><a id="link_href" href="https://www.google.com/" target="_blank"></a></p>
+      </div>
+  `;
 
-    class Main extends HTMLElement {
+  class Main extends HTMLElement {
       constructor () {
-        super()
+          super();
   
-        this._shadowRoot = this.attachShadow({ mode: 'open' })
-        this._shadowRoot.appendChild(template.content.cloneNode(true))
+          this._shadowRoot = this.attachShadow({ mode: 'open' });
+          this._shadowRoot.appendChild(template.content.cloneNode(true));
   
-        this._root      = this._shadowRoot.getElementById('root')
-        this._link_href = this._shadowRoot.getElementById('link_href')
-
-        //this.x_coordinate = 0
-        //this.y_coordinate = 0
-
-
+          this._root = this._shadowRoot.getElementById('root');
+          this._link_href = this._shadowRoot.getElementById('link_href');
+  
+          this.x_coordinate = 0;
+          this.y_coordinate = 0;
+  
+          document.addEventListener('click', (event) => {
+              this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
+              this.y_coordinate = event.clientY; // Vertical coordinate of the click event
+  
+              // Output the coordinates
+              console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
+              console.log(typeof(this.x_coordinate));
+              console.log(typeof(this.y_coordinate));
+          });
       }
-
+  
       setLink (link) {
-        this._link = link
-        this.render()
+          this._link = link;
+          this.render();
       }
-
+  
       setDimensionId (DimensionId) {
-        this._DimensionId = DimensionId
-        this.render()
+          this._DimensionId = DimensionId;
+          this.render();
       }
-
+  
       getLink () {
-        return this._link
+          return this._link;
       }
-
+  
       get_X_Coordinate () {
-        this.render()
-        return this.x_coordinate
+          return this.x_coordinate;
       }
-
+  
       get_Y_Coordinate () {
-        this.render()
-        return this.y_coordinate
+          return this.y_coordinate;
       }
-
+  
       onCustomWidgetResize (width, height) {
       }
-
+  
       onCustomWidgetAfterUpdate (changedProps) {
       }
   
@@ -60,27 +65,15 @@
       }
   
       async render () {
-        
-        this._link_href.textContent = this._DimensionId
-        this._link_href.href        = this._link
-        
-        document.addEventListener('click', function(event) {
-          this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
-          this.y_coordinate = event.clientY; // Vertical coordinate of the click event
-          
-          // Output the coordinates
-          console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
-          console.log(typeof(this.x_coordinate));
-          console.log(typeof(this.x_coordinate));
-        });
-
-
-        const dataBinding = this.dataBinding
-        if (!dataBinding || dataBinding.state !== 'success') {
-          return
-        }    
+          this._link_href.textContent = this._DimensionId;
+          this._link_href.href = this._link;
+  
+          const dataBinding = this.dataBinding;
+          if (!dataBinding || dataBinding.state !== 'success') {
+              return;
+          }    
       }
-    }
+  }
 
-    customElements.define('com-sap-sac-exercise-aa30', Main)
-  })()
+  customElements.define('com-sap-sac-exercise-aa30', Main);
+})();
