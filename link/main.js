@@ -60,7 +60,7 @@
           this.y_coordinate = event.clientY; // Vertical coordinate of the click event
 
           // Output the coordinates
-          console.log('Clicked at coordinates: (' + this.x + ', ' + this.y + ')');
+          console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
         });
 
         this._link_href.textContent = this._DimensionId
