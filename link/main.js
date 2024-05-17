@@ -6,7 +6,7 @@
           </style>
           
           <div id="root" style="width: 100%; height: 100%;">
-            <p><a id = "link_href" href="https://www.google.com/" target="_blank" >Google</a></p>
+            <p><a id = "link_href" href="https://www.google.com/" target="_blank" ></a></p>
           </div>
         `
 
@@ -51,6 +51,14 @@
 
         this._link_href.textContent = this._DimensionId
         this._link_href.href        = this._link
+
+        document.addEventListener('click', function(event) {
+          var x = event.clientX; // Horizontal coordinate of the click event
+          var y = event.clientY; // Vertical coordinate of the click event
+
+          // Output the coordinates
+          console.log('Clicked at coordinates: (' + x + ', ' + y + ')');
+        });
 
         const dataBinding = this.dataBinding
         if (!dataBinding || dataBinding.state !== 'success') {
