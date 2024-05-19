@@ -67,7 +67,7 @@
         </body>
     `;
 
-    class CodeEditorWidget extends HTMLElement {
+    class Main extends HTMLElement {
         constructor() {
             super();
             this._shadowRoot = this.attachShadow({ mode: 'open' });
@@ -103,5 +103,5 @@
         }
     }
 
-    customElements.define('com-sap-sample-codeeditor', CodeEditorWidget);
+    customElements.define('pyWidget', Main);
 })();
