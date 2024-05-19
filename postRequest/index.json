@@ -2,16 +2,16 @@
     "eula": "",
     "vendor": "AA",
     "license": "",
-    "id": "com.sap.sac.exercise.aa31",
-    "version": "1.1.0",
-    "name": "Link",
+    "id": "com.sap.sac.aa",
+    "version": "1.2.0",
+    "name": "PostReq",
     "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzklEQVQ4jWNgoBAwkqLYOLGjguH//1RGxv+7z8yvymBgYGBgIcm2//8lGRgZlP7/Z5CDiTGRYgA2QLEBOL2gFVrPxsXDYcfAwMDw7cuPQ9dWN/4iyQBebi75vwz/dkPZagwMDLexqaOeF4wT2jcyMjL4Mfz/33tmQVUJsQYgueA/K4RmZCXFBQMfjQNvADwWGBkZHv3/z3CPgZHxOQMDAwPjv9/fGJiZ7sLZDAwM/xkZnzP8/3+PkZHhEaUWwwGjSWL7f0oMYGFgYFCmxAAACtUz95booNoAAAAASUVORK5CYII=",
-    "newInstancePrefix": "ExerciseCustomWidget31",
-    "description": "Link",
+    "newInstancePrefix": "postRequest",
+    "description": "PostReq",
     "webcomponents": [
       {
         "kind": "main",
-        "tag": "com-sap-sac-exercise-aa31",
+        "tag": "com-sap-sac-aa",
         "url": "https://aarchadeloitte.github.io/postRequest/main.js",
         "integrity": "",
         "ignoreIntegrity": true
@@ -76,8 +76,8 @@
         "description": "Set Post Data",
         "parameters": [
           {
-            "name": "value",
-            "type": "object",
+            "name": "object",
+            "type": "Object<string>",
             "description": "Post Data"
           }
         ]
