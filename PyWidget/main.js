@@ -67,33 +67,41 @@
         </body>
         `;
   
-    class Main extends HTMLElement {
-      constructor () {
-        super()
-        this._shadowRoot = this.attachShadow({ mode: 'open' })
-        this._shadowRoot.appendChild(template.content.cloneNode(true))
-      }
-  
-      onCustomWidgetResize (width, height) {
-      }
-  
-      onCustomWidgetAfterUpdate (changedProps) {
-      }
-  
-      onCustomWidgetDestroy () {
-      }
-  
-      async render () {
-  
-        const url = `https://${this._ServerSAP}/${this._ODataService}`;
-      
-          
-        const dataBinding = this.dataBinding
-        if (!dataBinding || dataBinding.state !== 'success') {
-          return
+        class Main extends HTMLElement {
+            constructor() {
+                super();
+                this._shadowRoot = this.attachShadow({ mode: 'open' });
+                this._shadowRoot.appendChild(template.content.cloneNode(true));
+                this._output = this._shadowRoot.getElementById('output');
+                this._code = this._shadowRoot.getElementById('code');
+    
+                // Initialize CodeMirror for syntax highlighting
+                this._codeMirror = CodeMirror.fromTextArea(this._code, {
+                    mode: "python",
+                    lineNumbers: true,
+                    autofocus: true
+                });
+    
+                this._initializePyodide();
+            }
+    
+            _initializePyodide() {
+                this._output.value = 'Initializing...\n';
+                languagePluginLoader.then(() => {
+                    this._output.value += 'Ready!\n';
+                });
+            }
+    
+            evaluatePython() {
+                pyodide.runPythonAsync(this._codeMirror.getValue())
+                    .then(output => this._addToOutput(output))
+                    .catch(err => this._addToOutput(err));
+            }
+    
+            _addToOutput(output) {
+                this._output.value += '>>>' + this._codeMirror.getValue() + '\n' + output + '\n';
+            }
         }
-      }
-    }
-  
+      
     customElements.define('com-sap-sac-py', Main)
   })()
