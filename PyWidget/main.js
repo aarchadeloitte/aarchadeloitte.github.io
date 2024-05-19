@@ -75,32 +75,9 @@
             this._output = this._shadowRoot.getElementById('output');
             this._code = this._shadowRoot.getElementById('code');
 
-            // Initialize CodeMirror for syntax highlighting
-            this._codeMirror = CodeMirror.fromTextArea(this._code, {
-                mode: "python",
-                lineNumbers: true,
-                autofocus: true
-            });
 
-            this._initializePyodide();
         }
 
-        _initializePyodide() {
-            this._output.value = 'Initializing...\n';
-            languagePluginLoader.then(() => {
-                this._output.value += 'Ready!\n';
-            });
-        }
-
-        evaluatePython() {
-            pyodide.runPythonAsync(this._codeMirror.getValue())
-                .then(output => this._addToOutput(output))
-                .catch(err => this._addToOutput(err));
-        }
-
-        _addToOutput(output) {
-            this._output.value += '>>>' + this._codeMirror.getValue() + '\n' + output + '\n';
-        }
     }
 
     customElements.define('com-sap-sac-py', Main);
