@@ -103,5 +103,5 @@
         }
     }
 
-    customElements.define('sac-pyWidget', Main);
+    customElements.define('PyCustomWidget', Main);
 })();
