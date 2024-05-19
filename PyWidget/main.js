@@ -103,5 +103,5 @@
         }
     }
 
-    customElements.define('com-sap-sac-pyWidget', Main);
+    customElements.define('com-sap-sac-py', Main);
 })();
