@@ -74,15 +74,16 @@
                 this._shadowRoot.appendChild(template.content.cloneNode(true));
                 this._output = this._shadowRoot.getElementById('output');
                 this._code = this._shadowRoot.getElementById('code');
-    
-                // Initialize CodeMirror for syntax highlighting
-                this._codeMirror = CodeMirror.fromTextArea(this._code, {
-                    mode: "python",
+        
+                this._initializePyodide();
+            }
+
+            connectedCallback() {
+                this.codeMirror = CodeMirror.fromTextArea(this.code, {
+                    mode: 'python',
                     lineNumbers: true,
                     autofocus: true
                 });
-    
-                this._initializePyodide();
             }
     
             _initializePyodide() {
