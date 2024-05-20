@@ -65,7 +65,7 @@ var getScriptPromisify = (src) => {
         <body>
             <div id="notebook">
                 <p></p>
-                <button id='run-button' onclick='evaluatePython()'>Run</button>
+                <button id='run-button'>Run</button>
                 <textarea id='code' placeholder='Enter Python code here...'></textarea>
                 <br><br>
                 <div>Output:</div>
@@ -85,12 +85,7 @@ var getScriptPromisify = (src) => {
                 this.output.value = 'Initializing...\n';
                 this.render()
 
-                // Event listener
-                document.addEventListener("DOMContentLoaded", function() {
-                    this.shadowRoot.getElementById("run-button").addEventListener("click", function() {
-                        this.evaluatePython();
-                    });
-                });
+
 
 
             }
@@ -130,6 +125,13 @@ var getScriptPromisify = (src) => {
                 
                 this.initializeCodeMirror();
                 this.initializePyodide();
+
+                // Event listener
+                document.addEventListener("DOMContentLoaded", function() {
+                    this.runButton.addEventListener("click", function() {
+                        this.evaluatePython();
+                    });
+                });
         
     
             }
