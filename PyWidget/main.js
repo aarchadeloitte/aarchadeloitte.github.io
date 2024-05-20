@@ -70,12 +70,32 @@
         class Main extends HTMLElement {
             constructor() {
                 super();
-                this._shadowRoot = this.attachShadow({ mode: 'open' });
-                this._shadowRoot.appendChild(template.content.cloneNode(true));
-                this._output = this._shadowRoot.getElementById('output');
-                this._code = this._shadowRoot.getElementById('code');
-        
-                this._initializePyodide();
+                this.attachShadow({ mode: 'open' }).appendChild(template.content.cloneNode(true));
+
+                this.output = this.shadowRoot.getElementById('output');
+                this.code = this.shadowRoot.getElementById('code');
+                this.runButton = this.shadowRoot.getElementById('run-button');
+
+                this.output.value = 'Initializing...\n';
+
+                // Initialize Pyodide
+                this.loadPyodideAndPackages();
+                
+                this.runButton.addEventListener('click', () => this.evaluatePython());
+
+            }
+
+            async loadPyodideAndPackages() {
+                this.pyodide = await loadPyodide();
+                this.output.value += 'Ready!\n';
+            }
+            async evaluatePython() {
+                try {
+                    let output = await this.pyodide.runPythonAsync(this.codeMirror.getValue());
+                    this.addToOutput(output);
+                } catch (err) {
+                    this.addToOutput(err);
+                }
             }
 
             connectedCallback() {
@@ -85,23 +105,11 @@
                     autofocus: true
                 });
             }
-    
-            _initializePyodide() {
-                this._output.value = 'Initializing...\n';
-                languagePluginLoader.then(() => {
-                    this._output.value += 'Ready!\n';
-                });
+
+            addToOutput(output) {
+                this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + output + '\n';
             }
-    
-            evaluatePython() {
-                pyodide.runPythonAsync(this._codeMirror.getValue())
-                    .then(output => this._addToOutput(output))
-                    .catch(err => this._addToOutput(err));
-            }
-    
-            _addToOutput(output) {
-                this._output.value += '>>>' + this._codeMirror.getValue() + '\n' + output + '\n';
-            }
+
         }
       
     customElements.define('com-sap-sac-py', Main)
