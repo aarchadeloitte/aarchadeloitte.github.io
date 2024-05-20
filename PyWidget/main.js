@@ -87,7 +87,7 @@ var getScriptPromisify = (src) => {
 
                 // Event listener
                 document.addEventListener("DOMContentLoaded", function() {
-                    this.shadowRoot.getElementById("evaluateButton").addEventListener("click", function() {
+                    this.shadowRoot.getElementById("run-button").addEventListener("click", function() {
                         this.evaluatePython();
                     });
                 });
@@ -113,6 +113,7 @@ var getScriptPromisify = (src) => {
             addToOutput(s) {
                 this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + s + '\n';
             }
+
             evaluatePython() {
                 pyodide.runPythonAsync(this.codeMirror.getValue())
                     .then(output => this.addToOutput(output))
