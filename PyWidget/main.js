@@ -1,3 +1,10 @@
+// For CALLBACKS
+var getScriptPromisify = (src) => {
+    return new Promise((resolve) => {
+      $.getScript(src, resolve);
+    });
+  };
+
 
 (function () {
     const template = document.createElement('template')
@@ -78,10 +85,18 @@
 
                 this.output.value = 'Initializing...\n';
 
+
                 // Initialize Pyodide
                 this.loadPyodideAndPackages();
-                
-                this.runButton.addEventListener('click', () => this.evaluatePython());
+            
+
+            }
+
+            async render () {
+
+                await getScriptPromisify('https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js');
+                await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.js');
+                await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/python/python.js');
 
             }
 
@@ -89,6 +104,9 @@
                 this.pyodide = await loadPyodide();
                 this.output.value += 'Ready!\n';
             }
+
+
+
             async evaluatePython() {
                 try {
                     let output = await this.pyodide.runPythonAsync(this.codeMirror.getValue());
@@ -98,19 +116,25 @@
                 }
             }
 
+
+
+            addToOutput(output) {
+                this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + output + '\n';
+            }
+
             connectedCallback() {
                 this.codeMirror = CodeMirror.fromTextArea(this.code, {
                     mode: 'python',
                     lineNumbers: true,
                     autofocus: true
                 });
-            }
 
-            addToOutput(output) {
-                this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + output + '\n';
-            }
+                // Add event listener for the run button
+                this.runButton.addEventListener('click', () => this.evaluatePython());
 
+            
         }
+    }
       
     customElements.define('com-sap-sac-py', Main)
   })()
