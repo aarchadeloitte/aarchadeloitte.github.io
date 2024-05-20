@@ -78,62 +78,53 @@ var getScriptPromisify = (src) => {
             constructor() {
                 super();
                 this.attachShadow({ mode: 'open' }).appendChild(template.content.cloneNode(true));
-
                 this.output = this.shadowRoot.getElementById('output');
                 this.code = this.shadowRoot.getElementById('code');
                 this.runButton = this.shadowRoot.getElementById('run-button');
 
                 this.output.value = 'Initializing...\n';
-
-
-                // Initialize Pyodide
-                this.loadPyodideAndPackages();
-            
+                this.render()
 
             }
 
-            async render () {
+            initializeCodeMirror() {
+                this.codeMirror = CodeMirror.fromTextArea(this.codeElement, {
+                    mode: "python",
+                    lineNumbers: true,
+                    autofocus: true
+                });
+            }
+
+            initializePyodide() {
+                this.output.value = 'Initializing...\n';
+                languagePluginLoader.then(() => {
+                    this.output.value += 'Ready!\n';
+                });
+            }
+
+            addToOutput(s) {
+                this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + s + '\n';
+            }
+            evaluatePython() {
+                pyodide.runPythonAsync(this.codeMirror.getValue())
+                    .then(output => this.addToOutput(output))
+                    .catch(err => {
+                        this.addToOutput(err);
+                    });
+            }
+
+            async render() {
 
                 await getScriptPromisify('https://cdn.jsdelivr.net/pyodide/v0.16.1/full/pyodide.js');
                 await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.js');
                 await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/python/python.js');
-
+                
+                this.initializeCodeMirror();
+                this.initializePyodide();
+        
+    
             }
 
-            async loadPyodideAndPackages() {
-                this.pyodide = await loadPyodide();
-                this.output.value += 'Ready!\n';
-            }
-
-
-
-            async evaluatePython() {
-                try {
-                    let output = await this.pyodide.runPythonAsync(this.codeMirror.getValue());
-                    this.addToOutput(output);
-                } catch (err) {
-                    this.addToOutput(err);
-                }
-            }
-
-
-
-            addToOutput(output) {
-                this.output.value += '>>>' + this.codeMirror.getValue() + '\n' + output + '\n';
-            }
-
-            connectedCallback() {
-                this.codeMirror = CodeMirror.fromTextArea(this.code, {
-                    mode: 'python',
-                    lineNumbers: true,
-                    autofocus: true
-                });
-
-                // Add event listener for the run button
-                this.runButton.addEventListener('click', () => this.evaluatePython());
-
-            
-        }
     }
       
     customElements.define('com-sap-sac-py', Main)
