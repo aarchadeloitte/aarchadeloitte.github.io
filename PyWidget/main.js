@@ -85,10 +85,18 @@ var getScriptPromisify = (src) => {
                 this.output.value = 'Initializing...\n';
                 this.render()
 
+                // Event listener
+                document.addEventListener("DOMContentLoaded", function() {
+                    this.shadowRoot.getElementById("evaluateButton").addEventListener("click", function() {
+                        this.evaluatePython();
+                    });
+                });
+
+
             }
 
             initializeCodeMirror() {
-                this.codeMirror = CodeMirror.fromTextArea(this.codeElement, {
+                this.codeMirror = CodeMirror.fromTextArea(this.code, {
                     mode: "python",
                     lineNumbers: true,
                     autofocus: true
