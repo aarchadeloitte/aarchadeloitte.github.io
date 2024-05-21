@@ -84,7 +84,13 @@ var getScriptPromisify = (src) => {
 
                 this.output.value = 'Initializing...\n';
                 this.render()
-
+                
+                // Event listener
+                document.addEventListener("DOMContentLoaded", function() {
+                    this.runButton.addEventListener("click", function() {
+                        this.evaluatePython();
+                    });
+                });
 
 
 
@@ -126,12 +132,7 @@ var getScriptPromisify = (src) => {
                 this.initializeCodeMirror();
                 this.initializePyodide();
 
-                // Event listener
-                document.addEventListener("DOMContentLoaded", function() {
-                    this.runButton.addEventListener("click", function() {
-                        this.evaluatePython();
-                    });
-                });
+
         
     
             }
