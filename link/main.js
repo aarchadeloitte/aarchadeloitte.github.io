@@ -12,8 +12,9 @@
             position: relative; /* Needed for the arrow positioning */
             display: flex;
             justify-content: left;
+            left: 5.5px;
             align-items: left;
-            padding: 20px; /* Add padding to create space inside the box */
+            padding: 30px; /* Add padding to create space inside the box */
             border: 0.5px solid black; /* Add a border around the box */
             background-color: #FCFCFC; /* Optional: Add a background color to the box */
             box-shadow: 0 4px 8px rgba(0, 0, 0, .3); 
@@ -35,6 +36,7 @@
             color: #5E97C4; /* Set the text color */
             font-family: Arial, sans-serif; /* Set a font for better readability */
         }
+
        </style>
         <div id="root">
             <div class="link-container">
@@ -43,7 +45,7 @@
         </div>
   `;
 
-  
+
   class Main extends HTMLElement {
       constructor () {
           super();
