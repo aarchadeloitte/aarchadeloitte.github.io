@@ -12,9 +12,9 @@
             position: relative; /* Needed for the arrow positioning */
             display: flex;
             justify-content: left;
-            left: 5.5px;
+            left: 7px;
             align-items: left;
-            padding: 30px; /* Add padding to create space inside the box */
+            padding: 20px; /* Add padding to create space inside the box */
             border: 0.5px solid black; /* Add a border around the box */
             background-color: #FCFCFC; /* Optional: Add a background color to the box */
             box-shadow: 0 4px 8px rgba(0, 0, 0, .3); 
