@@ -1,12 +1,46 @@
 (function () {
   const template = document.createElement('template');
   template.innerHTML = `
-      <style>
-      </style>
-      
-      <div id="root" style="width: 100%; height: 100%;">
-          <p><a id="link_href" href="https://www.google.com/" target="_blank"></a></p>
-      </div>
+       <style>
+        #root {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure the div takes the full height of the viewport */
+        }
+        .link-container {
+            position: relative; /* Needed for the arrow positioning */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Add padding to create space inside the box */
+            border: 0.5px solid black; /* Add a border around the box */
+            background-color: #f0f0f0; /* Optional: Add a background color to the box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .3); 
+        }
+        .link-container::before {
+            content: '';
+            position: absolute;
+            left: -5.5px; /* Adjust the position to seamlessly integrate with the border */
+            top: 50%;
+            transform: translateY(-50%) rotate(135deg); /* Center and rotate the arrow */
+            border: solid black;
+            border-width: 0 0.5px 0.5px 0;
+            display: inline-block;
+            padding: 5px;
+            background-color: #f0f0f0; /* Match the background color of the box */
+        }
+        #link_href {
+            text-decoration: link; /* Remove the underline from the link */
+            color: black; /* Set the text color */
+            font-family: Arial, sans-serif; /* Set a font for better readability */
+        }
+       </style>
+        <div id="root">
+            <div class="link-container">
+                <a id="link_href" href="https://www.google.com/" target="_blank"></a>
+            </div>
+        </div>
   `;
 
   class Main extends HTMLElement {
