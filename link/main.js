@@ -63,7 +63,7 @@
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
                 this.x_coordinatecl = event.offsetX; // Horizontal coordinate of the click event
-                this.y_coordinatecl = event.offsetX; // Vertical coordinate of the click event
+                this.y_coordinatecl = event.offsetY; // Vertical coordinate of the click event
 
 
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
