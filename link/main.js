@@ -67,6 +67,7 @@
                 this.rect = this._link_href.getBoundingClientRect();
                 console.log(this.rect.width);
                 console.log(this.rect.height);
+                
 
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
               //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
