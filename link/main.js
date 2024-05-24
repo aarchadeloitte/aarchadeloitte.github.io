@@ -62,7 +62,10 @@
           document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
-
+                document.addEventListener('scroll', () => {
+                    this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
+                    this.y_coordinate = event.pageY; // Vertical coordinate of the click event
+                    });
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
               //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
               // Output the coordinates
@@ -71,17 +74,6 @@
                 console.log(typeof(this.y_coordinate));
           });
 
-          document.addEventListener('scroll', (event) => {
-            this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
-            this.y_coordinate = event.pageY; // Vertical coordinate of the click event
-
-          //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
-          //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
-          // Output the coordinates
-            console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
-            console.log(typeof(this.x_coordinate));
-            console.log(typeof(this.y_coordinate));
-      });
       }
   
       setLink (link) {
