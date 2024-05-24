@@ -56,8 +56,8 @@
           this._root = this._shadowRoot.getElementById('root');
           this._link_href = this._shadowRoot.getElementById('link_href');
   
-          this.x_coordinate = 0;
-          this.y_coordinate = 0;
+          //this.x_coordinate = 0;
+          //this.y_coordinate = 0;
   
           document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
