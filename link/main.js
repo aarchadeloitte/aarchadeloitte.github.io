@@ -56,7 +56,7 @@
           this._root = this._shadowRoot.getElementById('root');
           this._link_href = this._shadowRoot.getElementById('link_href');
     
-          template.addEventListener('click', (event) => {
+          document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
 
