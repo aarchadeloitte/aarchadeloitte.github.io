@@ -64,8 +64,9 @@
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
                 this.x_coordinatecl = event.clientX; // Horizontal coordinate of the click event
                 this.y_coordinatecl = event.clientY; // Vertical coordinate of the click event
-                const rect = this._link_href.getBoundingClientRect();
-                console.log(rect.width  + rect.height);
+                this.rect = this._link_href.getBoundingClientRect();
+                console.log(this.rect.width);
+                console.log(this.rect.height);
 
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
               //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
