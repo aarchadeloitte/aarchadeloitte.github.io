@@ -73,9 +73,11 @@
         window.addEventListener('scroll', () => { 
             this.scrollX = window.scrollX; // Current horizontal scroll position
             this.scrollY = window.scrollY; // Current vertical scroll positio}
+            console.log('Scroll: (' + this.scrollX + ', ' + this.scrollY + ')'); 
         });
-        console.log('Scroll: (' + this.scrollX + ', ' + this.scrollY + ')'); 
-    }
+      }
+
+
       setLink (link) {
           this._link = link;
           this.render();
