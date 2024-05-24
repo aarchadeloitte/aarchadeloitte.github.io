@@ -62,11 +62,8 @@
           document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
-                this.x_coordinatecl = event.clientX; // Horizontal coordinate of the click event
-                this.y_coordinatecl = event.clientY; // Vertical coordinate of the click event
-                this.rect = template.getBoundingClientRect();
-                console.log(this.rect.width);
-                console.log(this.rect.height);
+                this.x_coordinatecl = event.offsetX; // Horizontal coordinate of the click event
+                this.y_coordinatecl = event.offsetX; // Vertical coordinate of the click event
 
 
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
