@@ -60,8 +60,8 @@
           //this.y_coordinate = 0;
   
           document.addEventListener('click', (event) => {
-                this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
-                this.y_coordinate = event.pageY; // Vertical coordinate of the click event
+                this.x_coordinate = event.pageX + window.scrollX; // Horizontal coordinate of the click event
+                this.y_coordinate = event.pageY + window.scrollY; // Vertical coordinate of the click event
 
               //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
               //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
