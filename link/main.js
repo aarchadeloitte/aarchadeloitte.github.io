@@ -3,7 +3,7 @@
   template.innerHTML = `
        <style>
         #root {
-            display: flex;
+            width: 300px;
             justify-content: flex-start;
             align-items: flex-start;
             height: 100vh; /* Ensure the div takes the full height of the viewport */
