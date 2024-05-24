@@ -55,22 +55,12 @@
   
           this._root = this._shadowRoot.getElementById('root');
           this._link_href = this._shadowRoot.getElementById('link_href');
-  
-          //this.x_coordinate = 0;
-          //this.y_coordinate = 0;
-  
-          document.addEventListener('click', (event) => {
+    
+          this._link_href.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
-                this.x_coordinatecl = event.offsetX; // Horizontal coordinate of the click event
-                this.y_coordinatecl = event.offsetY; // Vertical coordinate of the click event
 
-
-              //this.x_coordinate = event.clientX; // Horizontal coordinate of the click event
-              //this.y_coordinate = event.clientY; // Vertical coordinate of the click event
-              // Output the coordinates
                 console.log('Clicked at coordinates: (' + this.x_coordinate + ', ' + this.y_coordinate + ')');
-                console.log('Clicked at client: (' + this.x_coordinatecl + ', ' + this.y_coordinatecl + ')');
 
         });
 
