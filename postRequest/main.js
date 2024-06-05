@@ -67,7 +67,7 @@
       xhrGet.send();
 
       xhrGet.onreadystatechange = () => {
-        if (xhrGet.readyState === 2) {
+        if (xhrGet.readyState === 4) {
           const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
 
           // Step 2. Send POST request
