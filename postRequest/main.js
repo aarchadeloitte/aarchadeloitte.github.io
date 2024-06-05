@@ -78,7 +78,7 @@
           xhr.setRequestHeader('Cache-Control', 'no-cache');
           xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
           xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
-          xhr.setRequestHeader('Access-Control-Allow-Methods', 'PUT');
+          xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
           xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
           xhr.withCredentials = true;
 
