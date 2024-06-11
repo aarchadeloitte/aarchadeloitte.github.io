@@ -105,7 +105,7 @@
           const dataBinding = this.dataBinding;
           if (!dataBinding || dataBinding.state !== 'success') {
               return;
-          }    
+          }
       }
   }
 
