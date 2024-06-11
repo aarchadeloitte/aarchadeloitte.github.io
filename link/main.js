@@ -72,7 +72,7 @@
           this.render();
       }
   
-      setDimensionId (DimensionId) {
+      setDimensionId(DimensionId) {
           this._DimensionId = DimensionId;
           this.render();
       }
@@ -99,15 +99,14 @@
       }
   
       async render () {
-          this._link_href.textContent = this._DimensionId;
-          this._link_href.href = this._link;
-  
-          const dataBinding = this.dataBinding;
-          if (!dataBinding || dataBinding.state !== 'success') {
-              return;
-          }
-      }
-  }
 
-  customElements.define('com-sap-sac-exercise-aa30', Main);
+        this._link_href.textContent = this._DimensionId;
+        this._link_href.href = this._link;
+        
+        const dataBinding = this.dataBinding;
+        if (!dataBinding || dataBinding.state !== 'success') {
+            return;
+        }
+      }
+  } customElements.define('com-sap-sac-exercise-aa30', Main);
 })();
