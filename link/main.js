@@ -9,27 +9,28 @@
             height: 100vh; /* Ensure the div takes the full height of the viewport */
         }
         .link-container {
-            position: relative; /* Needed for the arrow positioning */
+            position: relative;
             display: flex;
+            flex-direction: column;
             justify-content: left;
             left: 7px;
             align-items: left;
-            padding: 20px; /* Add padding to create space inside the box */
-            border: 0.5px solid black; /* Add a border around the box */
-            background-color: #FCFCFC; /* Optional: Add a background color to the box */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, .3); 
+            padding: 20px;
+            border: 0.5px solid black;
+            background-color: #FCFCFC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
         }
         .link-container::before {
             content: '';
             position: absolute;
-            left: -5.5px; /* Adjust the position to seamlessly integrate with the border */
+            left: -5.5px;
             top: 50%;
-            transform: translateY(-50%) rotate(135deg); /* Center and rotate the arrow */
+            transform: translateY(-50%) rotate(135deg);
             border: solid black;
             border-width: 0 0.5px 0.5px 0;
             display: inline-block;
             padding: 5px;
-            background-color: #FCFCFC; /* Match the background color of the box */
+            background-color: #FCFCFC;
         }
         .link {
             text-decoration: none;
@@ -38,6 +39,7 @@
             margin-bottom: 10px;
             display: block; /* Ensures each link starts on a new line */
         }
+
 
 
        </style>
