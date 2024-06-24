@@ -38,11 +38,10 @@
         }
 
        </style>
-        <div id="root">
-            <div class="link-container">
-                <a id="link_href" href="https://www.google.com/" target="_blank"></a>
-            </div>
-        </div>
+       <div id="root">
+            <div class="link-container" id="links-container"> </div>
+        </div>>
+
   `;
 
 
@@ -54,7 +53,8 @@
           this._shadowRoot.appendChild(template.content.cloneNode(true));
   
           this._root = this._shadowRoot.getElementById('root');
-          this._link_href = this._shadowRoot.getElementById('link_href');
+          this._linksContainer = this._shadowRoot.getElementById('links-container');
+
     
           document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
@@ -99,9 +99,20 @@
       }
   
       async render () {
+        this._linksContainer.innerHTML = ''; // Clear existing links
+        
+        if (this._link && this._link.length > 0 && this._DimensionId && this._DimensionId.length > 0) {
+            this._link.forEach((link, index) => {
+                const linkElement = document.createElement('a');
+                linkElement.textContent = this._DimensionId[index];
+                linkElement.href = link;
+                linkElement.classList.add('link');
+                this._linksContainer.appendChild(linkElement);
+            });
+        }
 
-        this._link_href.textContent = this._DimensionId;
-        this._link_href.href = this._link;
+        //this._link_href.textContent = this._DimensionId;
+        //this._link_href.href = this._link;
         
         const dataBinding = this.dataBinding;
         if (!dataBinding || dataBinding.state !== 'success') {
