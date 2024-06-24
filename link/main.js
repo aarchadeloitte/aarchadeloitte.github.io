@@ -31,11 +31,14 @@
             padding: 5px;
             background-color: #FCFCFC; /* Match the background color of the box */
         }
-        #link_href {
-            text-decoration: link; /* Remove the underline from the link */
-            color: #5E97C4; /* Set the text color */
-            font-family: Arial, sans-serif; /* Set a font for better readability */
+        .link {
+            text-decoration: none;
+            color: #5E97C4;
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+            display: block; /* Ensures each link starts on a new line */
         }
+
 
        </style>
        <div id="root">
