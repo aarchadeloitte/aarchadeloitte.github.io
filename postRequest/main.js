@@ -99,7 +99,7 @@
             
             xhr.send(JSON.stringify(data));
             xhr.onreadystatechange = () => {
-              this.Response = xhr.responseText;
+              this.Response = JSON.parse(xhr.responseText);
             }
           }
         };
