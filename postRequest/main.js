@@ -96,7 +96,7 @@
               xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
               xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
               xhr.withCredentials = true;
-            
+
               xhr.send(JSON.stringify(data));
               xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
