@@ -98,12 +98,12 @@
             xhr.withCredentials = true;
 
             xhr.send(JSON.stringify(data));
-            this.Response = xhr.Response;  
+            this.Response = xhr.responseText;  
 
           }
         };
       } else {
-        this.Response = xhrGet.Response;
+        this.Response = xhrGet.responseText;
       }
         
       const dataBinding = this.dataBinding
