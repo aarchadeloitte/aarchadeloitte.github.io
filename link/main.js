@@ -40,15 +40,12 @@
             display: block; /* Ensures each link starts on a new line */
         }
 
-
-
        </style>
        <div id="root">
             <div class="link-container" id="links-container"> </div>
         </div>>
 
   `;
-
 
   class Main extends HTMLElement {
       constructor () {
@@ -60,7 +57,6 @@
           this._root = this._shadowRoot.getElementById('root');
           this._linksContainer = this._shadowRoot.getElementById('links-container');
 
-    
           document.addEventListener('click', (event) => {
                 this.x_coordinate = event.pageX; // Horizontal coordinate of the click event
                 this.y_coordinate = event.pageY; // Vertical coordinate of the click event
