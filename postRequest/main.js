@@ -96,10 +96,11 @@
             xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
             xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
             xhr.withCredentials = true;
-
+            
             xhr.send(JSON.stringify(data));
-            this.Response = xhr.responseText;  
-
+            xhrGet.onreadystatechange = () => {
+              this.Response = xhr.responseText;
+            }
           }
         };
       } else {
