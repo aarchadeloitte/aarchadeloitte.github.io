@@ -99,7 +99,11 @@
             
             xhr.send(JSON.stringify(data));
             xhr.onreadystatechange = () => {
-              this.Response = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4) {
+                if (xhr.status == 201) {
+                  this.Response = JSON.parse(xhr.responseText);
+                }
+              }
             }
           }
         };
