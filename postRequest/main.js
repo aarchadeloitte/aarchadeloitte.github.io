@@ -77,39 +77,37 @@
       xhrGet.withCredentials = true;
       xhrGet.send();
       
-      if (this._postData) {
-
-        const data = this._postData; // Data to be posted
-
         xhrGet.onreadystatechange = () => {
           if (xhrGet.readyState === 4) {
-            const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
-
-            // Step 2. Send POST request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-type', 'application/json');
-            xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
-            xhr.setRequestHeader('Cache-Control', 'no-cache');
-            xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
-            xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
-            xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
-            xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
-            xhr.withCredentials = true;
+            this.Response = xhrGet.responseText;
             
-            xhr.send(JSON.stringify(data));
-            xhr.onreadystatechange = () => {
-              if (xhr.readyState == 4) {
-                if (xhr.status == 201) {
-                  this.Response = JSON.parse(xhr.responseText);
-                }
-              }
-            }
-          }
+            if (this._postData) {
+              const data = this._postData; // Data to be posted
+              const __XCsrfToken = xhrGet.getResponseHeader('x-csrf-token');
+
+              // Step 2. Send POST request
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', url, true);
+              xhr.setRequestHeader('Content-type', 'application/json');
+              xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
+              xhr.setRequestHeader('Cache-Control', 'no-cache');
+              xhr.setRequestHeader("X-Referrer-Hash", window.location.hash);
+              xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
+              xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
+              xhr.setRequestHeader('X-CSRF-Token', __XCsrfToken);
+              xhr.withCredentials = true;
+            
+              xhr.send(JSON.stringify(data));
+              xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                  if (xhr.status == 201) {
+                    this.Response = JSON.parse(xhr.responseText);
+                  };
+                };
+              };
+            };
+          };
         };
-      } else {
-        this.Response = xhrGet.responseText;
-      }
         
       const dataBinding = this.dataBinding
       if (!dataBinding || dataBinding.state !== 'success') {
