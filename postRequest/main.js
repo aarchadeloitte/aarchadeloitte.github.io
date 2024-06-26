@@ -79,7 +79,8 @@
       
         xhrGet.onreadystatechange = () => {
           if (xhrGet.readyState === 4) {
-            this.Response = xhrGet.responseText;
+            
+            this.Response = JSON.parse(xhrGet.responseText);
             
             if (this._postData) {
               const data = this._postData; // Data to be posted
