@@ -98,7 +98,7 @@
             xhr.withCredentials = true;
             
             xhr.send(JSON.stringify(data));
-            xhrGet.onreadystatechange = () => {
+            xhr.onreadystatechange = () => {
               this.Response = xhr.responseText;
             }
           }
