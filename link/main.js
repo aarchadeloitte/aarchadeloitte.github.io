@@ -107,6 +107,7 @@
                 const linkElement = document.createElement('a');
                 linkElement.textContent = this._DimensionId[index];
                 linkElement.href = link;
+                linkElement.target = '_blank';
                 linkElement.classList.add('link');
                 this._linksContainer.appendChild(linkElement);
             });
