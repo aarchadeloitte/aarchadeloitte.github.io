@@ -43,11 +43,6 @@
       return this.Response
     }
 
-
-
-
-
-    
     getLink () {
       return this._link
     }
