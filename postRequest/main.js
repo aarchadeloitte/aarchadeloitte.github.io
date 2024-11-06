@@ -103,11 +103,14 @@
                   if (xhr.status == 201) {
                      //Get Status
                     this.Response = JSON.parse(xhr.responseText);
+                    //Get Status
+                    this.Status = xhr.status
+                  } else {
+                    //Get Status
+                    this.Status = xhr.status
                   };
                 };
               };
-              //Get Status
-              this.Status = xhr.status
             };
           };
         };
