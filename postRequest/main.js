@@ -43,6 +43,10 @@
       return this.Response
     }
 
+    getStatus () {
+      return this.Status
+    }
+
     getLink () {
       return this._link
     }
@@ -97,10 +101,13 @@
               xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
                   if (xhr.status == 201) {
+                     //Get Status
                     this.Response = JSON.parse(xhr.responseText);
                   };
                 };
               };
+              //Get Status
+              this.Status = xhr.status
             };
           };
         };
