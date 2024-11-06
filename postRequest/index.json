@@ -90,6 +90,12 @@
       "description": "Get Response",
       "returnType" : "Object<string>"
     }
+    ,
+      "getStatus": {
+      "description": "Get Response",
+      "returnType" : "string"
+  }
+
 
   },
   "events":{},
