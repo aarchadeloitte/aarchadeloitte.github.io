@@ -65,7 +65,7 @@
       const url = `https://${this._ServerSAP}/${this._ODataService}`;
       
       var xhrGet = new XMLHttpRequest();
-      xhrGet.open('GET', url, true);
+      xhrGet.open('GET', url, false);
       xhrGet.setRequestHeader('X-CSRF-Token', 'Fetch');
       xhrGet.setRequestHeader('Access-Control-Allow-Methods', 'GET');
       xhrGet.setRequestHeader('Access-Control-Allow-Origin', 'https://itsvac-test.eu20.hcs.cloud.sap');
@@ -90,7 +90,7 @@
 
               // Step 2. Send POST request
               var xhr = new XMLHttpRequest();
-              xhr.open('POST', url, true);
+              xhr.open('POST', url, false);
               xhr.setRequestHeader('Content-type', 'application/json');
               xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
               xhr.setRequestHeader('Cache-Control', 'no-cache');
