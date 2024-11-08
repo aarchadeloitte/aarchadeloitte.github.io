@@ -75,6 +75,7 @@
       xhrGet.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       xhrGet.withCredentials = true;
       xhrGet.send();
+      this.Status = xhrGet.status
       
         xhrGet.onreadystatechange = () => {
           if (xhrGet.readyState === 4) {
