@@ -77,7 +77,7 @@
       xhrGet.send();
       this.Status = xhrGet.status
       
-        xhrGet.onreadystatechange = () => {
+        //xhrGet.onreadystatechange = () => {
           if (xhrGet.readyState === 4) {
 
             this.Status = xhrGet.status
@@ -101,7 +101,7 @@
               xhr.withCredentials = true;
 
               xhr.send(JSON.stringify(data));
-              xhr.onreadystatechange = () => {
+              //xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
                   if (xhr.status == 201) {
                      //Get Status
@@ -113,10 +113,10 @@
                     this.Status = xhr.status
                   };
                 };
-              };
+             // };
             };
           };
-        };
+       // };
         
       const dataBinding = this.dataBinding
       if (!dataBinding || dataBinding.state !== 'success') {
