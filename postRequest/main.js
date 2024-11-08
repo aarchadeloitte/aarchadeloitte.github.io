@@ -60,7 +60,7 @@
     onCustomWidgetDestroy () {
     }
 
-    async render () {
+    render () {
 
       const url = `https://${this._ServerSAP}/${this._ODataService}`;
       
