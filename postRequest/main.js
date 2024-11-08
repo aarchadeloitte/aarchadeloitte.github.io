@@ -82,7 +82,11 @@
 
             this.Status = xhrGet.status
             
-            this.Response = JSON.parse(xhrGet.responseText);
+            if (this.Status !== 401 ){
+              this.Response = JSON.parse(xhrGet.responseText);
+            } else {
+              this.Response  = {}
+            }
             
             if (this._postData) {
               const data = this._postData; // Data to be posted
