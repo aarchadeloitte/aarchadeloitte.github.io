@@ -78,6 +78,8 @@
       
         xhrGet.onreadystatechange = () => {
           if (xhrGet.readyState === 4) {
+
+            this.Status = xhrGet.status
             
             this.Response = JSON.parse(xhrGet.responseText);
             
