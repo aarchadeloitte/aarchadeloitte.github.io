@@ -101,7 +101,9 @@ var getScriptPromisify = (src) => {
 		const svg = d3.select(this._svg);
 		
 		d3.json("https://aarchadeloitte.github.io/austria.geojson")
-			.then(data => {                                          // Create a projection to transform geographic coordinates to SVG coordinates
+			.then(data => {
+				
+				// Create a projection to transform geographic coordinates to SVG coordinates
 		
 				const projection = d3.geoIdentity().fitSize([600, 600], data);
                 // Create a path generator
@@ -124,6 +126,23 @@ var getScriptPromisify = (src) => {
 						d3.select(this).classed("selected", true);
 					}
 				});
+				    const specialLocations = [
+					  { name: "Vienna", coords: [16.3738, 48.2082], color: "red" },
+					  { name: "Salzburg", coords: [13.0455, 47.8095], color: "blue" },
+					  { name: "Innsbruck", coords: [11.4041, 47.2692], color: "orange" }];
+				
+					svg.selectAll("circle")
+					  .data(specialLocations)
+					  .enter()
+					  .append("circle")
+					  .attr("cx", d => projection(d.coords)[0])
+					  .attr("cy", d => projection(d.coords)[1])
+					  .attr("r", 6)
+					  .attr("fill", d => d.color)
+					  .attr("stroke", "#fff")
+					  .attr("stroke-width", 1.5)
+					  .append("title")
+					  .text(d => d.name);
         	})
             .catch(error => console.error('Error fetching data:', error));
    		}
