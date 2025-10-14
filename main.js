@@ -126,44 +126,54 @@ var getScriptPromisify = (src) => {
 						d3.select(this).classed("selected", true);
 					}
 				});
-				   // === Special Dots ===
-				const specialLocations = [
-				  { name: "Vienna", coords: [16.3738, 48.2082], color: "red" },
-				  { name: "Salzburg", coords: [13.0455, 47.8095], color: "blue" },
-				  { name: "Innsbruck", coords: [11.4041, 47.2692], color: "orange" }
-				];
-				
-				// Draw clickable dots
-				svg.selectAll("circle")
-				  .data(specialLocations)
-				  .enter()
-				  .append("circle")
-				  .attr("cx", d => projection(d.coords)[0])
-				  .attr("cy", d => projection(d.coords)[1])
-				  .attr("r", 6)
-				  .attr("fill", d => d.color)
-				  .attr("stroke", "#fff")
-				  .attr("stroke-width", 1.5)
-				  .style("cursor", "pointer")
-				  .on("click", (event, d) => {
-					  // Deselect all circles first
-					  svg.selectAll("circle").attr("stroke", "#fff").attr("stroke-width", 1.5);
-					  
-					  // Highlight selected dot
-					  d3.select(event.currentTarget)
-						.attr("stroke", "#000")
-						.attr("stroke-width", 3);
-				
-					  // Dispatch a custom SAC event
-					  const customEvent = new CustomEvent("onDotClick", {
-						detail: { name: d.name, coordinates: d.coords }
-					  });
-					  this.dispatchEvent(customEvent);
-				
-					  console.log("Clicked dot:", d.name);
-				  })
-				  .append("title")
-				  .text(d => d.name);
+			// === Special Dots ===
+			const specialLocations = [
+			  { name: "Bregenz", coords: [9.7471, 47.5031], color: "#e41a1c" },
+			  { name: "Graz", coords: [15.4395, 47.0707], color: "#377eb8" },
+			  { name: "Innsbruck", coords: [11.4041, 47.2692], color: "#4daf4a" },
+			  { name: "Kitzbühel", coords: [12.3922, 47.4464], color: "#984ea3" },
+			  { name: "Kleinwalsertal", coords: [10.2000, 47.3333], color: "#ff7f00" },
+			  { name: "Linz", coords: [14.2858, 48.3069], color: "#ffff33" },
+			  { name: "Salzburg", coords: [13.0455, 47.8095], color: "#a65628" },
+			  { name: "Seefeld", coords: [11.1833, 47.3300], color: "#f781bf" },
+			  { name: "Wien", coords: [16.3738, 48.2082], color: "#999999" },
+			  { name: "Zell am See", coords: [12.7960, 47.3257], color: "#66c2a5" },
+			  { name: "Baden", coords: [16.2308, 48.0064], color: "#fc8d62" },
+			  { name: "Velden", coords: [13.9330, 46.6160], color: "#8da0cb" }
+			];
+			
+			// Draw clickable dots
+			svg.selectAll("circle")
+			  .data(specialLocations)
+			  .enter()
+			  .append("circle")
+			  .attr("cx", d => projection(d.coords)[0])
+			  .attr("cy", d => projection(d.coords)[1])
+			  .attr("r", 6)
+			  .attr("fill", d => d.color)
+			  .attr("stroke", "#fff")
+			  .attr("stroke-width", 1.5)
+			  .style("cursor", "pointer")
+			  .on("click", (event, d) => {
+			      // Deselect all circles first
+			      svg.selectAll("circle").attr("stroke", "#fff").attr("stroke-width", 1.5);
+			      
+			      // Highlight selected dot
+			      d3.select(event.currentTarget)
+			        .attr("stroke", "#000")
+			        .attr("stroke-width", 3);
+			
+			      // Dispatch a custom SAC-style event
+			      const customEvent = new CustomEvent("onDotClick", {
+			        detail: { name: d.name, coordinates: d.coords }
+			      });
+			      this.dispatchEvent(customEvent);
+			
+			      console.log("Clicked dot:", d.name);
+			  })
+			  .append("title")
+			  .text(d => d.name);
+
 
         	})
             .catch(error => console.error('Error fetching data:', error));
