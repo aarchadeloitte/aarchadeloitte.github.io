@@ -142,7 +142,7 @@ var getScriptPromisify = (src) => {
 			  { name: "Velden", coords: [13.9330, 46.6160], color: "#8da0cb" }
 			];
 			
-			// Draw clickable dots
+			// Draw simple non-clickable dots (same color)
 			svg.selectAll("circle")
 			  .data(specialLocations)
 			  .enter()
@@ -150,27 +150,10 @@ var getScriptPromisify = (src) => {
 			  .attr("cx", d => projection(d.coords)[0])
 			  .attr("cy", d => projection(d.coords)[1])
 			  .attr("r", 6)
-			  .attr("fill", d => d.color)
+			  .attr("fill", "#0070f2") // Use one consistent color (blue)
 			  .attr("stroke", "#fff")
 			  .attr("stroke-width", 1.5)
-			  .style("cursor", "pointer")
-			  .on("click", (event, d) => {
-			      // Deselect all circles first
-			      svg.selectAll("circle").attr("stroke", "#fff").attr("stroke-width", 1.5);
-			      
-			      // Highlight selected dot
-			      d3.select(event.currentTarget)
-			        .attr("stroke", "#000")
-			        .attr("stroke-width", 3);
-			
-			      // Dispatch a custom SAC-style event
-			      const customEvent = new CustomEvent("onDotClick", {
-			        detail: { name: d.name, coordinates: d.coords }
-			      });
-			      this.dispatchEvent(customEvent);
-			
-			      console.log("Clicked dot:", d.name);
-			  })
+			  .style("cursor", "default") // No pointer on hover
 			  .append("title")
 			  .text(d => d.name);
 
