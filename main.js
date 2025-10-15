@@ -142,20 +142,22 @@ var getScriptPromisify = (src) => {
 			  { name: "Velden", coords: [13.9330, 46.6160], color: "#8da0cb" }
 			];
 			
-			// Draw simple non-clickable dots (same color)
+			// Draw simple non-clickable red dots
 			svg.selectAll("circle")
 			  .data(specialLocations)
 			  .enter()
 			  .append("circle")
 			  .attr("cx", d => projection(d.coords)[0])
 			  .attr("cy", d => projection(d.coords)[1])
-			  .attr("r", 6)
-			  .attr("fill", "#0070f2") // Use one consistent color (blue)
-			  .attr("stroke", "#fff")
+			  .attr("r", 6)                     // Dot size
+			  .attr("fill", "red")              // Red fill color
+			  .attr("stroke", "#fff")           // White border for visibility
 			  .attr("stroke-width", 1.5)
-			  .style("cursor", "default") // No pointer on hover
+			  .style("cursor", "default")       // Non-clickable
+			  .attr("shape-rendering", "auto")  // Smooth circle edges
 			  .append("title")
 			  .text(d => d.name);
+
 
 
         	})
