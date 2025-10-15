@@ -12,6 +12,7 @@ var getScriptPromisify = (src) => {
     <style>
       svg {
         position: relative;
+        overflow: visible;
       }
 
       path {
@@ -19,8 +20,6 @@ var getScriptPromisify = (src) => {
         stroke: #aaa;
         stroke-width: 0.5;
         cursor: pointer;
-        transform: scaleY(-1.3); /* Flip only the map */
-        transform-origin: center;
       }
 
       .selected {
@@ -37,9 +36,8 @@ var getScriptPromisify = (src) => {
         fill: red;               /* Red dots */
         stroke: #fff;            /* White outline */
         stroke-width: 1.5;
-        transform: scaleY(-1);   /* Counter-flip so dots stay round */
-        transform-origin: center;
         cursor: default;
+        shape-rendering: geometricPrecision;
       }
 
       .tooltip {
@@ -51,7 +49,7 @@ var getScriptPromisify = (src) => {
         display: none;
       }
     </style>
-		
+
     <svg id="map" width="600" height="600"></svg>
   `
 
@@ -98,7 +96,7 @@ var getScriptPromisify = (src) => {
     getSelectedRegion () {
       let _svgData = this._svg.childNodes
       for (let i = 0; i < _svgData.length; i++) {
-        if (_svgData[i].classList.value === 'selected') {
+        if (_svgData[i].classList && _svgData[i].classList.value === 'selected') {
           const __index = i
           let retVal = _svgData[__index].__data__.properties.name
           return retVal
@@ -111,10 +109,16 @@ var getScriptPromisify = (src) => {
       const svg = d3.select(this._svg)
       svg.selectAll('*').remove() // clear old render
 
+      const width = +this._svg.getAttribute('width') || 600
+      const height = +this._svg.getAttribute('height') || 600
+
       d3.json('https://aarchadeloitte.github.io/austria.geojson')
         .then(data => {
-          // Create projection
-          const projection = d3.geoIdentity().fitSize([600, 600], data)
+          // Create a projection and reflect Y so map is flipped vertically
+          // Use geoIdentity with reflectY(true) so coordinates used for both paths and circles match.
+          const projection = d3.geoIdentity()
+                               .reflectY(true)
+                               .fitSize([width, height], data)
 
           // Create a path generator
           const pathGenerator = d3.geoPath().projection(projection)
@@ -136,7 +140,7 @@ var getScriptPromisify = (src) => {
               }
             })
 
-          // Special Locations (static dots)
+          // Special Locations (static dots). coords are [lon, lat]
           const specialLocations = [
             { name: 'Bregenz', coords: [9.7471, 47.5031] },
             { name: 'Graz', coords: [15.4395, 47.0707] },
@@ -152,7 +156,7 @@ var getScriptPromisify = (src) => {
             { name: 'Velden', coords: [13.9330, 46.6160] }
           ]
 
-          // Draw non-clickable red dots
+          // Draw non-clickable red dots using the same projection
           svg.selectAll('circle')
             .data(specialLocations)
             .enter()
