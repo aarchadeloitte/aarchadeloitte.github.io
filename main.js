@@ -150,7 +150,7 @@ var getScriptPromisify = (src) => {
 			  .attr("cx", d => projection(d.coords)[0])
 			  .attr("cy", d => projection(d.coords)[1])
 			  .attr("r", 6)
-			  .attr("fill", "#0070f2") // Use one consistent color (blue)
+			  .attr("fill", "red") // Use one consistent color (blue)
 			  .attr("stroke", "#fff")
 			  .attr("stroke-width", 3)
 			  .style("cursor", "default") // No pointer on hover
