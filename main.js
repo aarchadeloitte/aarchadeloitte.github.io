@@ -152,7 +152,7 @@ var getScriptPromisify = (src) => {
 			  .attr("r", 6)
 			  .attr("fill", "#0070f2") // Use one consistent color (blue)
 			  .attr("stroke", "#fff")
-			  .attr("stroke-width", 1.5)
+			  .attr("stroke-width", 3)
 			  .style("cursor", "default") // No pointer on hover
 			  .append("title")
 			  .text(d => d.name);
